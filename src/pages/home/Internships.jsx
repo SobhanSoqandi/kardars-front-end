@@ -1,40 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InternshipsCart from "../../components/InternshipsCart";
-
 import { useNavigate } from "react-router-dom";
-
-import useMutationData from "../../hooks/useMutationData";
 import Loading from "../../components/Loading";
-
-const info = [
-  //   {
-  //     name: " تحلیل‌گران داده",
-  //     time: " 4 ماه",
-  //     discription:
-  //       "فرصت کارآموزی در زمینه علوم داده و یادگیری ماشین برای دانشجویان علاقه‌مند.",
-  //     location: " تهران",
-  //     titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
-  //   },
-  //   {
-  //     name: " تحلیل‌گران داده",
-  //     time: " 4 ماه",
-  //     discription:
-  //       "فرصت کارآموزی در زمینه علوم داده و یادگیری ماشین برای دانشجویان علاقه‌مند.",
-  //     location: " تهران",
-  //     titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
-  //   },
-];
+import useGet from "../../hooks/useGet";
 
 export default function Internships() {
   const navigate = useNavigate();
-  const {
-    mutate: getAdvertisements,
-    data: advertisements,
-    isSuccess,
-  } = useMutationData("student/advertisements", "post", "getadvertisements");
-  useEffect(() => {
-    getAdvertisements({});
-  }, []);
+  const { data: advertisements, isSuccess } = useGet(
+    "student/advertisements",
+    "getadvertisements",
+  );
   return (
     <>
       {isSuccess ? (

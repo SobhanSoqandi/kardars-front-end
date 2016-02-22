@@ -16,7 +16,8 @@ export default function Banner({ userLogin }) {
         ""
       ) : (
         <div className="flex items-center gap-2">
-          <div className="bg-transparent border-2 border-white text-white text-nowrap btn">
+          <div 
+          className="bg-transparent border-2 border-white text-white text-nowrap btn">
             ورود | ثبت‌نام شرکت
           </div>
           <div className="bg-white border-2 border-white text-[#2563eb] text-nowrap btn">
