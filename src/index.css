@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.btn {
+  @apply flex justify-center items-center px-6 py-3 rounded-xl w-[200px] h-[50px] font-medium;
+}
+
+.contain {
+  @apply px-[120px];
+}
