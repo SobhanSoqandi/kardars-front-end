@@ -22,16 +22,16 @@ const info = [
 export default function Internships() {
   return (
     <div className="flex flex-col justify-center items-center gap-5">
-      <div className="font-bold text-2xl">آخرین فرصت‌های کارآموزی</div>
+      <div className="font-bold text-[19px] md:text-[22px] lg:text-[25px]">آخرین فرصت‌های کارآموزی</div>
       <div className="flex flex-col justify-center items-center gap-14">
         {" "}
-        <div className="flex items-center gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5">
           {info.map((item) => (
             <InternshipsCart info={item} />
           ))}
         </div>
-        <div className="bg-[#475569] font-medium text-white text-nowrap btn">
-          مشاهده همه موقعیت‌ها
+        <div className="text-blue-600 border border-blue-600 btn ">
+          مشاهده همه موقعیت‌ها 
         </div>
       </div>
     </div>
