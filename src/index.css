@@ -1,9 +1,30 @@
+@import url("../public/fonts/font.css");
+
 @import "tailwindcss";
 
 .btn {
-  @apply flex justify-center items-center px-6 py-3 rounded-xl w-[200px] h-[50px] font-medium;
+  @apply flex justify-center items-center p-3 text-nowrap rounded-xl text-sm md:text-base cursor-pointer ;
 }
 
 .contain {
   @apply px-[120px];
 }
+
+.li--style {
+  @apply hover:text-blue-500 cursor-pointer hover:border-b-2 border-blue-500 text-xs md:text-lg xl:text-xl
+}
+
+.tag--style {
+  @apply text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px]
+}
+
+
+
+body{
+     font-family: "Vazir";
+}
+
+.logo {
+    font-family: "lalezar";
+}
+
