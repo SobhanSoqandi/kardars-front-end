@@ -12,7 +12,7 @@ function Input({
   return (
     <div className="flex flex-col items-start gap-2">
       <div className="flex justify-between items-center">
-        <h4 for={label} className={lableClassName}>
+        <h4 htmlFor={label} className={lableClassName}>
           {label}
         </h4>
         {headerOpt}
