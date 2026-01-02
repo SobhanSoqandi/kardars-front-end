@@ -10,4 +10,4 @@ export default function Info({ titr, content, icon }) {
   );
 }
 
-import React from "react";
+
