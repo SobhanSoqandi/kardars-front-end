@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 .btn {
-  @apply flex justify-center items-center p-3 text-nowrap rounded-xl text-sm md:text-base cursor-pointer ;
+  @apply flex justify-center items-center p-3 text-nowrap rounded-xl text-sm md:text-base cursor-pointer;
 }
 
 .contain {
@@ -18,13 +18,26 @@
   @apply text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px]
 }
 
+.input--style {
+  @apply bg-gray-50 rounded-xl focus:shadow-md focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white block w-full p-3
+}
 
+.mark {
+  @apply rounded-br-2xl rounded-tl-2xl border-b-2 border-t-2 border-blue-500
+}
 
-body{
-     font-family: "Vazir";
+.btn--primary {
+  @apply bg-blue-500 hover:bg-blue-600 text-white
+}
+
+.link--style {
+  @apply text-blue-600 hover:text-blue-700 hover:border-b border-r-blue-600 cursor-pointer text-balance
+}
+
+body {
+  font-family: "Vazir";
 }
 
 .logo {
-    font-family: "lalezar";
+  font-family: "lalezar";
 }
-

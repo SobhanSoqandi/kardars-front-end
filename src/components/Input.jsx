@@ -5,7 +5,7 @@ function Input({
   register = null,
   registerName,
   className,
-  headerOpt,
+  // headerOpt,
   lableClassName,
 }) {
   const selectProp = register != null ? register(registerName) : {};
@@ -15,7 +15,7 @@ function Input({
         <h4 htmlFor={label} className={lableClassName}>
           {label}
         </h4>
-        {headerOpt}
+        {/* {headerOpt} */}
       </div>
       <input
         {...selectProp}

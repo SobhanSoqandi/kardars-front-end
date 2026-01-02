@@ -6,20 +6,20 @@ import Textarea from "../../components/TextArea";
 
 export default function CompanyRegistration() {
   const inputStyle =
-    "w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500";
+    "bg-gray-100 rounded-xl focus:shadow-md focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white block w-full p-3";
   const labelStyle = "text-sm font-medium text-gray-700";
-  const requiredStar = <span className="mr-1 text-red-500">*</span>;
+
   const { register } = useForm();
   return (
-    <div className="shadow shadow-gray-400">
-      <div className="font-bold text-2xl"> ثبت‌نام شرکت</div>
+    <div>
+      <div className="font-bold text-xl text-center pt-10"> ثبت‌ نام شرکت </div>
       <div>
         <div className="flex justify-center items-center">
           <div
             className="bg-white shadow-lg mx-auto p-8 rounded-lg w-[600px] max-w-4xl text-right dir-rtl"
             dir="rtl"
           >
-            <h2 className="mb-8 font-bold text-blue-600 text-xl text-center">
+            <h2 className="mark logo mb-8 w-28 mx-auto font-bold text-blue-600 text-xl text-center">
               کاردرس
             </h2>
 
@@ -27,7 +27,7 @@ export default function CompanyRegistration() {
               <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input
                   label="نام شرکت"
-                  headerOpt={requiredStar}
+
                   placeholder="نام رسمی را وارد کنید"
                   className={inputStyle}
                   lableClassName={labelStyle}
@@ -43,7 +43,7 @@ export default function CompanyRegistration() {
               <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input
                   label="ایمیل سازمانی"
-                  headerOpt={requiredStar}
+
                   type="email"
                   placeholder="example@company.com"
                   className={inputStyle}
@@ -51,7 +51,7 @@ export default function CompanyRegistration() {
                 />
                 <Input
                   label="شماره تماس"
-                  headerOpt={requiredStar}
+
                   placeholder="۰۲۱-XXXXXX"
                   className={inputStyle}
                   lableClassName={labelStyle}
@@ -61,14 +61,14 @@ export default function CompanyRegistration() {
               <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input
                   label="رمز عبور"
-                  headerOpt={requiredStar}
+
                   type="password"
                   className={inputStyle}
                   lableClassName={labelStyle}
                 />
                 <Input
                   label="تکرار رمز عبور"
-                  headerOpt={requiredStar}
+
                   type="password"
                   className={inputStyle}
                   lableClassName={labelStyle}
@@ -84,7 +84,7 @@ export default function CompanyRegistration() {
                 <div className="space-y-1">
                   <div className="flex">
                     <div>صنعت</div>
-                    {requiredStar}
+
                   </div>
                   <Select
                     width={"100%"}
@@ -97,7 +97,7 @@ export default function CompanyRegistration() {
                 <div className="space-y-1">
                   <div className="flex">
                     <div>صنعت</div>
-                    {requiredStar}
+
                   </div>
                   <Select
                     width={"100%"}
@@ -113,15 +113,15 @@ export default function CompanyRegistration() {
                   label="آدرس شرکت"
                   register={register}
                   registerName="companyAddress"
-                  headerOpt={requiredStar}
-                  className="bg-white px-2 py-1 border border-gray-200 rounded-sm outline-0"
+
+                  className="input--style"
                 />
 
                 <Textarea
                   label="توضیحات شرکت"
                   register={register}
                   registerName="companyDescription"
-                  headerOpt={requiredStar}
+
                   placeholder="درباره شرکت، حوزه فعالیت و فرصت‌های کارآموزی خود توضیح دهید..."
                   rows={4}
                   className="bg-white px-2 py-1 border border-gray-200 rounded-sm outline-0"
@@ -169,13 +169,13 @@ export default function CompanyRegistration() {
               <div className="flex justify-center gap-4 mt-8">
                 <button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 px-8 py-2 rounded-md text-white transition"
+                  className="btn bg-blue-500 hover:bg-blue-600 text-white transition w-full"
                 >
                   ثبت‌نام شرکت
                 </button>
                 <button
                   type="button"
-                  className="hover:bg-gray-50 px-8 py-2 border border-gray-300 rounded-md"
+                  className="btn shadow w-full"
                 >
                   انصراف
                 </button>

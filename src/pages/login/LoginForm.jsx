@@ -1,42 +1,51 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "../../components/Input";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm();
+
+
+  const navigate = useNavigate();
+
   return (
     <form className="space-y-5">
       <Input
-        className={"border border-gray-800 rounded-md px-3 py-1 w-full"}
+        className="input--style"
         register={register}
         registerName={"email"}
-        label={"ایمیل"}
+        label={"ایمیل :"}
         placeholder={"example@gmail.com"}
       />
       <Input
         register={register}
-        className={"border border-gray-800 rounded-md px-3 py-1 w-full"}
+        className="input--style"
         registerName={"password"}
-        label={"رمز عبور"}
+        label={"رمز عبور :"}
         type="password"
       />
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-4">
+        <div className="flex text-center items-center space-x-2">
           <Input
             register={register}
-            className={"w-6.25 h-6.25"}
+            className={"w-4 h-4"}
             registerName={"remember"}
             type={"checkbox"}
           />
-          <div className="text-gray-600">مرا به خاطر بسپار</div>
+          <div className="text-gray-700 text-balance pt-2">مرا به خاطر بسپار</div>
         </div>
-        <div className="text-blue-700">فراموشی رمز؟</div>
+        <div className="link--style">فراموشی رمز ؟</div>
       </div>
-      <div className={"text-white bg-blue-700 " + btnclass}>ورود</div>
-      <div className={" border border-gray-500 " + btnclass}>
+      <div className="btn btn--primary ">ورود</div>
+      <div 
+      onClick={() => navigate("/studentRegisteration")}
+      className="btn border border-blue-200 shadow " >
         ثبت‌نام دانشجو
       </div>
-      <div className={"border border-gray-500 " + btnclass}>ثبت‌نام شرکت</div>
+      <div 
+      onClick={() => navigate("/CompanyRegistration")}
+      className="btn border border-blue-200 shadow " >ثبت‌نام شرکت</div>
     </form>
   );
 }

@@ -8,16 +8,25 @@ export default function Select({
   fn,
   value,
   width,
+  label,
 }) {
   const selectProps = register != null ? register(name) : {};
   return (
-    <div>
+    <div className="flex flex-col items-start gap-2" >
+
+      <div className="flex justify-between items-center">
+        <h4 htmlFor={label}>
+          {label}
+        </h4>
+        {/* {headerOpt} */}
+      </div>
+
       <select
         style={{ width: width, height: height }}
         value={value}
         onChange={(e) => fn(e.currentTarget.value)}
         {...selectProps}
-        className="pr-2 border border-gray-300 rounded-md appearance-none"
+        className="pr-2 input--style appearance-none"
       >
         {/* <option value="" hidden>
           Fillter{" "}

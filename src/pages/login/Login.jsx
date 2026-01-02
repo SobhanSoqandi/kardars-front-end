@@ -8,9 +8,9 @@ export default function Login() {
         className="space-y-6 shadow shadow-gray-300 p-5 rounded-xl w-[350px]"
         style={{ direction: "rtl" }}
       >
-        <div className="space-y-3 text-center">
-          <div className="font-bold text-3xl">ورود به سیستم</div>
-          <div className="text-gray-700">
+        <div className="space-y-3 text-center border-b pb-3 border-blue-500">
+          <div className="font-bold text-lg">ورود به سیستم</div>
+          <div className="text-gray-700 text-sm">
             برای دسترسی به پنل کاربری خود وارد شوید
           </div>
         </div>
