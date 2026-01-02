@@ -7,12 +7,22 @@ import CompanyRegistration from "./pages/login/CompanyRegistration";
 import CompanyPenel from "./pages/companyPenel/CompanyPenel";
 import StudentRegisteration from "./pages/login/StudentRegisteration";
 import AllCompany from "./pages/allcompany/AllCompany";
+import StudentPanel from "./pages/studentPanel/StudentPanel";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route element={<Layout />} path="/" />
+        <Route element={<Layout />} path="/">
+          <Route element={<Home />} index />
+          <Route element={<CompanyPenel />} path="/company-panel" />
+          <Route
+            element={<CompanyRegistration />}
+            path="/CompanyRegistration"
+          />
+          <Route element={<StudentPanel />} path="student-panel" />
+        </Route>
         <Route element={<Login />} path="/login" />
         <Route element={<CompanyRegistration />} path="/CompanyRegistration" />
         <Route element={<StudentRegisteration />} path="/studentRegisteration" />

@@ -11,11 +11,11 @@
 }
 
 .li--style {
-  @apply hover:text-blue-500 cursor-pointer hover:border-b-2 border-blue-500 text-xs md:text-lg xl:text-xl
+  @apply hover:text-blue-500 cursor-pointer hover:border-b-2 border-blue-500 text-xs md:text-lg xl:text-xl;
 }
 
 .tag--style {
-  @apply text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px]
+  @apply text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px];
 }
 
 .input--style {
