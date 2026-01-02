@@ -10,3 +10,4 @@ export default function Info({ titr, content, icon }) {
   );
 }
 
+

@@ -8,7 +8,9 @@ export default function Layout() {
   return (
     <div className="space-y-[50px]">
       <Header />
+
        <Outlet />
+
       <Footer />
     </div>
   );
