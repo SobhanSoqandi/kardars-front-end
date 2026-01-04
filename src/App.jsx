@@ -13,19 +13,7 @@ import Home from "./pages/home/Home";
 function App() {
   return (
     <>
-      {/* <Routes>
-        <Route element={<Layout />} path="/" >
-          <Route element={<Login />} path="/login" />
-          <Route element={<CompanyRegistration />} path="/CompanyRegistration" />
-          <Route element={<StudentRegisteration />} path="/studentRegisteration" />
-          <Route element={<StudentPanel />} path="student-panel" />
-          <Route element={<AllCompany />} path="/all" />
-          <Route element={<CompanyPenel />} path="/company-panel" />
-        </Route>
-      </Routes> */}
-
-
-
+    
       <Routes>
         <Route element={<Layout />} path="/">
           <Route element={<Home />} index />
@@ -41,15 +29,6 @@ function App() {
         </Route>
         <Route element={<Login />} path="/login" />
       </Routes>
-
-
-
-
-
-
-
-
-
 
     </>
   );

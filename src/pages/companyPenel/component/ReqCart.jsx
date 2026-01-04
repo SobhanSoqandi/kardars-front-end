@@ -9,7 +9,7 @@ const reqInfo = {
 };
 export default function ReqCart() {
   return (
-    <div className="flex justify-between items-start shadow shadow-gray-300 p-4 rounded-2xl w-full">
+    <div className="flex-1 md:flex justify-between items-start shadow shadow-gray-300 p-4 rounded-2xl w-full">
       <div className="space-y-3">
         <div className="font-bold text-blue-700 text-xl">{reqInfo.name}</div>
         <div className="space-y-1">
@@ -18,10 +18,10 @@ export default function ReqCart() {
           <Info titr={"تاریخ"} content={reqInfo.date} />
         </div>
       </div>
-      <div className="space-y-2">
-        <div className="bg-blue-600 w-[150px] btn">dfd</div>
-        <div className="bg-green-600 w-[150px] btn">dfd</div>
-        <div className="bg-red-600 w-[150px] btn">dfd</div>
+      <div className="flex flex-row md:flex-col space-y-2 justify-between items-center gap-2 pt-4 md:pt-2" >
+        <div className="badge--style w-full bg-blue-400"> مشاهده رزومه </div>
+        <div className="badge--style w-full bg-green-600"> پذیرش </div>
+        <div className="badge--style w-full bg-red-400"> رد درخواست </div>
       </div>
     </div>
   );
