@@ -34,6 +34,14 @@
   @apply text-blue-600 hover:text-blue-700 hover:border-b border-r-blue-600 cursor-pointer text-balance
 }
 
+.badge--style {
+  @apply xl:p-3 p-2 rounded-xl text-xs xl:text-sm text-white text-center text-nowrap
+}
+
+.request--cart {
+  @apply flex justify-between items-start border border-gray-200 p-4 rounded-2xl  hover:border-blue-600 hover:shadow-lg hover:shadow-blue-200 cursor-pointer
+}
+
 body {
   font-family: "Vazir";
 }
