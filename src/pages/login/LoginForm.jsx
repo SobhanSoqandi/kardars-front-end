@@ -2,21 +2,37 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "../../components/Input";
 import { useNavigate } from "react-router-dom";
+import useMutationData from "../../hooks/useMutationData";
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm();
-
-
   const navigate = useNavigate();
-
+  const { mutate } = useMutationData("auth/login", "post", "loginToast");
   return (
-    <form className="space-y-5">
+    <form
+      className="space-y-5"
+      onSubmit={handleSubmit((data) => {
+        mutate(
+          { ...data, role: "student" },
+          {
+            onSuccess: (response) => {
+              console.log(response);
+              localStorage.setItem(
+                "personalInfo",
+                JSON.stringify(response.data?.[0])
+              );
+              navigate("/");
+            },
+          }
+        );
+      })}
+    >
       <Input
         className="input--style"
         register={register}
-        registerName={"email"}
-        label={"ایمیل :"}
-        placeholder={"example@gmail.com"}
+        registerName={"mobile"}
+        label={"موبایل :"}
+        placeholder={""}
       />
       <Input
         register={register}
@@ -26,28 +42,34 @@ export default function LoginForm() {
         type="password"
       />
       <div className="flex justify-between items-center">
-        <div className="flex text-center items-center space-x-2">
+        <div className="flex items-center space-x-2 text-center">
           <Input
-            register={register}
+            // register={register}
             className={"w-4 h-4"}
-            registerName={"remember"}
+            //registerName={"remember"}
             type={"checkbox"}
           />
-          <div className="text-gray-700 text-balance pt-2">مرا به خاطر بسپار</div>
+          <div className="pt-2 text-gray-700 text-balance">
+            مرا به خاطر بسپار
+          </div>
         </div>
         <div className="link--style">فراموشی رمز ؟</div>
       </div>
-      <div className="btn btn--primary ">ورود</div>
-      <div 
-      onClick={() => navigate("/studentRegisteration")}
-      className="btn border border-blue-200 shadow " >
+      <button className="btn btn--primary" type="submit">
+        ورود
+      </button>
+      <div
+        onClick={() => navigate("/studentRegisteration")}
+        className="shadow border border-blue-200 btn"
+      >
         ثبت‌نام دانشجو
       </div>
-      <div 
-      onClick={() => navigate("/CompanyRegistration")}
-      className="btn border border-blue-200 shadow " >ثبت‌نام شرکت</div>
+      <div
+        onClick={() => navigate("/CompanyRegistration")}
+        className="shadow border border-blue-200 btn"
+      >
+        ثبت‌نام شرکت
+      </div>
     </form>
   );
 }
-
-const btnclass = "flex justify-center items-center  p-2 rounded-2xl w-full";

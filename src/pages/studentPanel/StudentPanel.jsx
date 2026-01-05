@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Req from "./req";
+
+import useGet from "../../hooks/useGet";
+import { useNavigate } from "react-router-dom";
+
 import RequestStudent from "./RequestStudent";
 import Box from "../companyPenel/component/Box";
 import ContentPanel from "../../components/ContentPanel";
+
 
 const personalInfo = {
   name: "علی احمدی",
@@ -27,8 +32,26 @@ const personalInfo = {
     },
   ],
 };
+const info = JSON.parse(localStorage.getItem("personalInfo"));
+
 export default function StudentPanel() {
+  const { data, isSuccess, isError } = useGet(
+    "student/profile",
+    "getStudentInfo"
+  );
+  const navigate = useNavigate();
+  useEffect(() => {
+    isSuccess ? console.log(data) : null;
+    isError ? navigate("/login") : null;
+  }, [isSuccess, isError]);
   return (
+
+    <div className="space-y-4 contain" style={{ direction: "rtl" }}>
+      <div className="font-bold text-3xl">سلام ، {info.fullname}</div>
+      <div className="flex items-start gap-10 w-full">
+        <div className="shadow shadow-gray-400 rounded-2xl w-[65%]">
+          <div className="p-4 border-b border-b-gray-400">
+
     <div className="space-y-4 container mx-auto lg:px-20" style={{ direction: "rtl" }}>
       <div className="font-bold text-2xl">سلام ، {personalInfo.name}</div>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 xl:gap-10">
@@ -36,6 +59,7 @@ export default function StudentPanel() {
         {/* 1 */}
         <div className="shadow-lg shadow-gray-200 border border-gray-200 rounded-2xl xl:col-span-2 mx-5 xl:mx-0 ">
           <div className="p-4 font-bold text-lg xl:text-xl bg-gray-100 border rounded-t-2xl border-gray-200">
+
             درخواست‌های ارسالی
           </div>
           <div className="flex-1 overflow-y-auto max-h-[500px] p-4">
