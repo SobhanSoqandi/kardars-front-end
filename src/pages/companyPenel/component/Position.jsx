@@ -14,6 +14,8 @@ export default function Position() {
       className: "badge--style bg-red-400",
     },
   ];
+
+  
   return (
     <div className="flex justify-between items-center p-4">
       <div className="space-y-1">
