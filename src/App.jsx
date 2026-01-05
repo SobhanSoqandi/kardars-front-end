@@ -9,6 +9,7 @@ import StudentRegisteration from "./pages/login/StudentRegisteration";
 import AllCompany from "./pages/allcompany/AllCompany";
 import StudentPanel from "./pages/studentPanel/StudentPanel";
 import Home from "./pages/home/Home";
+import DetailCompany from "./pages/home/intershipdetail/component/DetailCompany";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             path="/CompanyRegistration"
           />
           <Route element={<StudentPanel />} path="student-panel" />
+          <Route element={<DetailCompany />} path="company-detail" />
         </Route>
         <Route element={<Login />} path="/login" />
       </Routes>

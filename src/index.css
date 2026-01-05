@@ -15,7 +15,9 @@
 }
 
 .tag--style {
-  @apply text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px];
+
+  @apply text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px]
+
 }
 
 .input--style {
@@ -48,4 +50,5 @@ body {
 
 .logo {
   font-family: "lalezar";
+  cursor: pointer;
 }
