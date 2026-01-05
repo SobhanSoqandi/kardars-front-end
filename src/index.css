@@ -44,6 +44,10 @@
   @apply flex justify-between items-start border border-gray-200 p-4 rounded-2xl  hover:border-blue-600 hover:shadow-lg hover:shadow-blue-200 cursor-pointer
 }
 
+.label--style {
+  @apply text-sm font-medium text-gray-700
+}
+
 body {
   font-family: "Vazir";
 }

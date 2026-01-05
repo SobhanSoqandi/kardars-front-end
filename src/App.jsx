@@ -13,6 +13,7 @@ import Home from "./pages/home/Home";
 import { Toaster } from "react-hot-toast";
 
 import DetailCompany from "./pages/home/intershipdetail/component/DetailCompany";
+import AddCompany from "./pages/addcompany/AddCompany";
 
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
           <Route element={<DetailCompany />} path="company-detail" />
         </Route>
         <Route element={<Login />} path="/login" />
+        <Route element={<AddCompany />} path="add" />
+
       </Routes>
 
 
