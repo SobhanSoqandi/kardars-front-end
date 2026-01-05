@@ -15,7 +15,9 @@
 }
 
 .tag--style {
-  @apply text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px];
+
+  @apply text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px]
+
 }
 
 .input--style {
@@ -34,10 +36,19 @@
   @apply text-blue-600 hover:text-blue-700 hover:border-b border-r-blue-600 cursor-pointer text-balance
 }
 
+.badge--style {
+  @apply xl:p-3 p-2 rounded-xl text-xs xl:text-sm text-white text-center text-nowrap
+}
+
+.request--cart {
+  @apply flex justify-between items-start border border-gray-200 p-4 rounded-2xl  hover:border-blue-600 hover:shadow-lg hover:shadow-blue-200 cursor-pointer
+}
+
 body {
   font-family: "Vazir";
 }
 
 .logo {
   font-family: "lalezar";
+  cursor: pointer;
 }

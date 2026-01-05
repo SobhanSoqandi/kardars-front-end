@@ -1,7 +1,7 @@
 export default function Info({ titr, content, icon }) {
   return (
     <div style={{ direction: "rtl" }} className="flex items-center gap-1">
-      <div className="flex items-center gap-1 font-medium tag--style">
+      <div className="flex items-center text-center gap-1 font-medium tag--style">
         {icon}
         {titr} :
       </div>

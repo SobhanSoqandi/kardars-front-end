@@ -9,22 +9,16 @@ import StudentRegisteration from "./pages/login/StudentRegisteration";
 import AllCompany from "./pages/allcompany/AllCompany";
 import StudentPanel from "./pages/studentPanel/StudentPanel";
 import Home from "./pages/home/Home";
+
 import { Toaster } from "react-hot-toast";
+
+import DetailCompany from "./pages/home/intershipdetail/component/DetailCompany";
+
 
 function App() {
   return (
     <>
-      {/* <Routes>
-        <Route element={<Layout />} path="/" >
-          <Route element={<Login />} path="/login" />
-          <Route element={<CompanyRegistration />} path="/CompanyRegistration" />
-          <Route element={<StudentRegisteration />} path="/studentRegisteration" />
-          <Route element={<StudentPanel />} path="student-panel" />
-          <Route element={<AllCompany />} path="/all" />
-          <Route element={<CompanyPenel />} path="/company-panel" />
-        </Route>
-      </Routes> */}
-      <Toaster position="top-center" />
+
       <Routes>
         <Route element={<Layout />} path="/">
           <Route element={<Home />} index />
@@ -40,9 +34,12 @@ function App() {
             path="/CompanyRegistration"
           />
           <Route element={<StudentPanel />} path="student-panel" />
+          <Route element={<DetailCompany />} path="company-detail" />
         </Route>
         <Route element={<Login />} path="/login" />
       </Routes>
+
+
     </>
   );
 }
