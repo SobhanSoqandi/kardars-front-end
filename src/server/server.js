@@ -1,0 +1,37 @@
+import axios from "axios";
+import { toast } from "react-hot-toast";
+
+const apikey = "YOUR_API_KEY";
+export const api = axios.create({
+  baseURL: "http://127.0.0.1:8000/api",
+  withCredentials: false,
+  headers: {
+    apikey: apikey,
+    "Content-Type": "application/json",
+  },
+});
+
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+api.interceptors.response.use(
+  (response) => {
+    if (response.config.method !== "get") {
+      toast.success("عملیات با موفقیت انجام شد");
+    }
+    return response;
+  },
+  (error) => {
+    const message = error.response?.data?.message || "خطایی رخ داده است";
+    toast.error(message);
+    return Promise.reject(error);
+  }
+);

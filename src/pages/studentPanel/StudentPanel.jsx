@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Req from "./req";
+import useGet from "../../hooks/useGet";
+import { useNavigate } from "react-router-dom";
 
 const personalInfo = {
   name: "علی احمدی",
@@ -12,10 +14,21 @@ const personalInfo = {
     },
   ],
 };
+const info = JSON.parse(localStorage.getItem("personalInfo"));
+
 export default function StudentPanel() {
+  const { data, isSuccess, isError } = useGet(
+    "student/profile",
+    "getStudentInfo"
+  );
+  const navigate = useNavigate();
+  useEffect(() => {
+    isSuccess ? console.log(data) : null;
+    isError ? navigate("/login") : null;
+  }, [isSuccess, isError]);
   return (
     <div className="space-y-4 contain" style={{ direction: "rtl" }}>
-      <div className="font-bold text-3xl">سلام ، {personalInfo.name}</div>
+      <div className="font-bold text-3xl">سلام ، {info.fullname}</div>
       <div className="flex items-start gap-10 w-full">
         <div className="shadow shadow-gray-400 rounded-2xl w-[65%]">
           <div className="p-4 border-b border-b-gray-400">

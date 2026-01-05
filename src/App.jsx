@@ -9,6 +9,7 @@ import StudentRegisteration from "./pages/login/StudentRegisteration";
 import AllCompany from "./pages/allcompany/AllCompany";
 import StudentPanel from "./pages/studentPanel/StudentPanel";
 import Home from "./pages/home/Home";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -23,14 +24,15 @@ function App() {
           <Route element={<CompanyPenel />} path="/company-panel" />
         </Route>
       </Routes> */}
-
-
-
+      <Toaster position="top-center" />
       <Routes>
         <Route element={<Layout />} path="/">
           <Route element={<Home />} index />
 
-          <Route element={<StudentRegisteration />} path="/studentRegisteration" />
+          <Route
+            element={<StudentRegisteration />}
+            path="/studentRegisteration"
+          />
 
           <Route element={<CompanyPenel />} path="/company-panel" />
           <Route
@@ -41,16 +43,6 @@ function App() {
         </Route>
         <Route element={<Login />} path="/login" />
       </Routes>
-
-
-
-
-
-
-
-
-
-
     </>
   );
 }
