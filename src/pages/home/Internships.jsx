@@ -1,5 +1,6 @@
 import React from "react";
 import InternshipsCart from "../../components/InternshipsCart";
+import { useNavigate } from "react-router-dom";
 
 const info = [
   {
@@ -19,7 +20,13 @@ const info = [
     titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
   },
 ];
+
+
 export default function Internships() {
+
+  const navigate = useNavigate();
+
+
   return (
     <div className="flex flex-col justify-center items-center gap-5">
       <div className="font-bold text-[19px] md:text-[22px] lg:text-[25px]">آخرین فرصت‌های کارآموزی</div>
@@ -30,8 +37,10 @@ export default function Internships() {
             <InternshipsCart info={item} />
           ))}
         </div>
-        <div className="text-blue-600 border border-blue-600 btn ">
-          مشاهده همه موقعیت‌ها 
+        <div
+          onClick={() => navigate("/all")}
+          className="text-blue-600 border border-blue-600 btn ">
+          مشاهده همه موقعیت‌ها
         </div>
       </div>
     </div>

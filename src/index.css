@@ -17,19 +17,27 @@
 .tag--style {
 
   @apply text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px]
-
 }
 
 .input--style {
   @apply bg-gray-50 rounded-xl focus:shadow-md focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white block w-full p-3
 }
 
+.input-file--style {
+  @apply bg-gray-50 rounded-xl w-full p-2 text-sm text-gray-700 cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white;
+}
+
+.input-file--style::file-selector-button {
+  @apply bg-blue-500 text-white border-0 rounded-lg px-4 py-2 mx-2 cursor-pointer hover:bg-blue-600 transition;
+}
+
+
 .mark {
   @apply rounded-br-2xl rounded-tl-2xl border-b-2 border-t-2 border-blue-500
 }
 
 .btn--primary {
-  @apply bg-blue-500 hover:bg-blue-600 text-white
+  @apply bg-blue-500 hover:bg-blue-600 text-white transition duration-200 p-4
 }
 
 .link--style {
@@ -41,11 +49,15 @@
 }
 
 .request--cart {
-  @apply flex justify-between items-start border border-gray-200 p-4 rounded-2xl  hover:border-blue-600 hover:shadow-lg hover:shadow-blue-200 cursor-pointer
+  @apply flex justify-between items-start border border-gray-200 p-4 rounded-2xl hover:border-blue-600 hover:shadow-lg hover:shadow-blue-200 cursor-pointer
 }
 
 .label--style {
   @apply text-sm font-medium text-gray-700
+}
+
+.btn--light {
+  @apply w-full py-3 px-4 border border-blue-100 hover:shadow hover:border-blue-500 text-gray-700 font-medium rounded-lg transition duration-200 cursor-pointer
 }
 
 body {

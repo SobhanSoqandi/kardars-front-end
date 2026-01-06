@@ -14,6 +14,8 @@ import { Toaster } from "react-hot-toast";
 
 import DetailCompany from "./pages/home/intershipdetail/component/DetailCompany";
 import AddCompany from "./pages/addcompany/AddCompany";
+import EditProfileStudent from "./pages/login/EditProfileStudent";
+import EditProfileCompany from "./pages/login/EditProfileCompany";
 
 
 function App() {
@@ -39,6 +41,9 @@ function App() {
         </Route>
         <Route element={<Login />} path="/login" />
         <Route element={<AddCompany />} path="add" />
+        <Route element={<EditProfileStudent />} path="edit-student" />
+        <Route element={<EditProfileCompany />} path="edit-company" />
+        <Route element={<AllCompany />} path="all" />
 
       </Routes>
 
