@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "./component/Box";
 import Body from "./Body";
+import useGet from "../../hooks/useGet";
 const companyInfo = {
   name: "",
   position: 5,
@@ -9,19 +10,46 @@ const companyInfo = {
   req: 2,
 };
 export default function CompanyPenel() {
+  const { data, isSuccess } = useGet(
+    "owner_company/profile",
+    "getCompany_Info"
+  );
   return (
-    <div style={{ direction: "rtl" }} className="space-y-10 container mx-auto px-5 lg:px-20">
-      <div className="space-y-2">
-        <div className="font-bold text-2xl">سلام،{companyInfo.name}</div>
-        <div>خلاصه وضعیت کارآموزی‌های شما</div>
-      </div>
-      <div className="flex-1 md:flex gap-4 space-y-10 w-full px-5">
-        <Box width="100%" titr={companyInfo.position} body={"موقعیت فعال"} />
-        <Box width="100%" titr={companyInfo.req} body={"درخواست جدید"} />
-        <Box width="100%" titr={companyInfo.pending} body={"در حال بررسی"} />
-        <Box width="100%" titr={companyInfo.accepted} body={"پذیرفته شده"} />
-      </div>
-      <Body comapany={companyInfo} />
-    </div>
+    <>
+      {isSuccess ? (
+        <div
+          style={{ direction: "rtl" }}
+          className="space-y-10 mx-auto px-5 lg:px-20 container"
+        >
+          <div className="space-y-2">
+            <div className="font-bold text-2xl">
+              سلام،{data?.data.full_name}
+            </div>
+            <div>خلاصه وضعیت کارآموزی‌های شما</div>
+          </div>
+          <div className="md:flex flex-1 gap-4 space-y-10 px-5 w-full">
+            <Box
+              width="100%"
+              titr={companyInfo.position}
+              body={"موقعیت فعال"}
+            />
+            <Box width="100%" titr={companyInfo.req} body={"درخواست جدید"} />
+            <Box
+              width="100%"
+              titr={companyInfo.pending}
+              body={"در حال بررسی"}
+            />
+            <Box
+              width="100%"
+              titr={companyInfo.accepted}
+              body={"پذیرفته شده"}
+            />
+          </div>
+          <Body comapany={companyInfo} />
+        </div>
+      ) : (
+        <div>loading</div>
+      )}
+    </>
   );
 }

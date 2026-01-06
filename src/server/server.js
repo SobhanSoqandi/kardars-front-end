@@ -1,6 +1,8 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
+import getToken from "../function/getToken";
+
 const apikey = "YOUR_API_KEY";
 export const api = axios.create({
   baseURL: "http://127.0.0.1:8000/api",
@@ -13,7 +15,7 @@ export const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
