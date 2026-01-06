@@ -24,147 +24,102 @@ export default function CompanyRegistration() {
             </h2>
 
             <form className="space-y-6">
-              <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
-                <Input
-                  label="نام شرکت"
-
-                  placeholder="نام رسمی را وارد کنید"
-                  className={inputStyle}
-                  lableClassName={labelStyle}
-                />
-                <Input
-                  label="نام تجاری"
-                  placeholder="برند شما"
-                  className={inputStyle}
-                  lableClassName={labelStyle}
-                />
-              </div>
 
               <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input
-                  label="ایمیل سازمانی"
-
-                  type="email"
-                  placeholder="example@company.com"
-                  className={inputStyle}
-                  lableClassName={labelStyle}
-                />
-                <Input
-                  label="شماره تماس"
-
-                  placeholder="۰۲۱-XXXXXX"
-                  className={inputStyle}
-                  lableClassName={labelStyle}
-                />
-              </div>
-
-              <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
-                <Input
-                  label="رمز عبور"
-
-                  type="password"
-                  className={inputStyle}
-                  lableClassName={labelStyle}
-                />
-                <Input
-                  label="تکرار رمز عبور"
-
-                  type="password"
-                  className={inputStyle}
-                  lableClassName={labelStyle}
-                />
-              </div>
-              <Input
-                label="وب‌سایت شرکت"
-                placeholder="https://www.example.com"
-                className={inputStyle}
-                lableClassName={labelStyle}
-              />
-              <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
-                <div className="space-y-1">
-                  <div className="flex">
-                    <div>صنعت</div>
-
-                  </div>
-                  <Select
-                    width={"100%"}
-                    height={"44px"}
-                    register={register}
-                    opt={["انتخاب کنید ..."]}
-                    name={"caategory"}
-                  />
-                </div>
-                <div className="space-y-1">
-                  <div className="flex">
-                    <div>صنعت</div>
-
-                  </div>
-                  <Select
-                    width={"100%"}
-                    height={"44px"}
-                    register={register}
-                    opt={["انتخاب کنید ..."]}
-                    name={"caategory"}
-                  />
-                </div>
-              </div>
-              <div className="space-y-5">
-                <Textarea
-                  label="آدرس شرکت"
+                  value="sss"
+                  label=" نام شرکت "
+                  placeholder=" نام رسمی "
+                  registerName={"first_name"}
                   register={register}
-                  registerName="companyAddress"
-
                   className="input--style"
+                  lableClassName="label--style"
+                />
+                <Input
+                  label=" نام  "
+                  placeholder=" نام صاحب شرکت "
+                  registerName={"last_name"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
+                />
+
+                <Input
+                  label=" نام خانوادگی  "
+                  placeholder=" نام خانوادگی    "
+                  registerName={"last_name"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
+                />
+
+                <Input
+                  label=" شماره تلفن همراه   "
+                  placeholder=" 0915 ------     "
+                  registerName={"last_name"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
+                />
+              </div>
+
+
+
+              <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
+
+                <Input
+                  label=" کدملی  "
+                  type="number"
+                  registerName={"student_code"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
+                />
+
+
+                <Input
+                  label=" تلفن  "
+                  placeholder=" تلفن ثابت شرکت "
+                  type="email"
+                  registerName={"uni"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
+                />
+
+                <Input
+                  label=" رشته   "
+                  type="text"
+                  registerName={"uni"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
+                />
+
+
+              </div>
+
+              <div className="gap-4 space-y-5" >
+                <Textarea
+                  label=" درباره شرکت  "
+                  type="text"
+                  registerName={"about"}
+                  register={register}
+                  className="input--style"
+                  lableClassName="label--style"
                 />
 
                 <Textarea
-                  label="توضیحات شرکت"
+                  label=" آدرس   "
+                  type="text"
+                  registerName={"about"}
                   register={register}
-                  registerName="companyDescription"
-
-                  placeholder="درباره شرکت، حوزه فعالیت و فرصت‌های کارآموزی خود توضیح دهید..."
-                  rows={4}
-                  className="bg-white px-2 py-1 border border-gray-200 rounded-sm outline-0"
+                  className="input--style h-14"
+                  lableClassName="label--style"
                 />
 
-                <Textarea
-                  label="مزایای کارآموزی در شرکت شما"
-                  register={register}
-                  registerName="internshipBenefits"
-                  placeholder="مزایایی که برای کارآموزان در نظر گرفته‌اید را توضیح دهید..."
-                  rows={3}
-                  className="bg-white px-2 py-1 border border-gray-200 rounded-sm outline-0"
-                />
 
-                <div className="flex flex-col gap-3 mt-4 text-gray-600 text-sm">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      {...register("acceptTerms")}
-                      className="border-gray-300 rounded focus:ring-blue-500 w-4 h-4 text-blue-600"
-                    />
-                    <span>
-                      با{" "}
-                      <a href="#" className="text-blue-500">
-                        قوانین و مقررات
-                      </a>{" "}
-                      و{" "}
-                      <a href="#" className="text-blue-500">
-                        شرایط همکاری
-                      </a>{" "}
-                      موافقم
-                    </span>
-                  </label>
 
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      {...register("subscribeNewsletter")}
-                      className="border-gray-300 rounded focus:ring-blue-500 w-4 h-4 text-blue-600"
-                    />
-                    <span>اشتراک در خبرنامه برای دریافت آخرین اطلاعات</span>
-                  </label>
-                </div>
               </div>
               <div className="flex justify-center gap-4 mt-8">
                 <button

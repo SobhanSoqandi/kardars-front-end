@@ -47,20 +47,20 @@ export default function LoginForm() {
         type="password"
       />
       <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-2 text-center">
+        <div className="flex items-center gap-1">
           <Input
-            // register={register}
-            className={"w-4 h-4"}
-            //registerName={"remember"}
-            type={"checkbox"}
+            className="w-4 h-4"
+            type="checkbox"
+            register={register}
+            registerName="remember"
           />
-          <div className="pt-2 text-gray-700 text-balance">
+          <span className="text-gray-700 whitespace-nowrap">
             مرا به خاطر بسپار
-          </div>
+          </span>
         </div>
         <div className="link--style">فراموشی رمز ؟</div>
       </div>
-      <button className="btn btn--primary" type="submit">
+      <button className="btn btn--primary w-full" type="submit">
         ورود
       </button>
       <div

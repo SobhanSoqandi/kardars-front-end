@@ -37,15 +37,15 @@ function AllCompany() {
 
       <div className="flex-1 md:flex space-y-5 justify-between gap-5 p-5 shadow-lg mx-5 xl:mx-32 rounded-xl" >
 
-        <div className="w-full" >
+        <div className="w-full lg:w-1/2" >
           <Input
             label="جستحو"
             placeholder=" عنوان شغلی یا نام شرکت . . . "
-            className="input--style w-full border border-blue-500"
+            className="input--style w-full border border-blue-300"
           />
         </div>
 
-        <div className="w-full" >
+        {/* <div className="w-full" >
           <Select
             label="دسته بندی"
             width={"100%"}
@@ -53,7 +53,7 @@ function AllCompany() {
             opt={["انتخاب کنید ..."]}
             name={"caategory"}
           />
-        </div>
+        </div> */}
 
       </div>
 
