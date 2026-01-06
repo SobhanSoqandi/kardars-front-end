@@ -11,7 +11,7 @@ export default function useGet(url, queryName, opt = {}) {
       const response = await api.get(`/${url}`);
       return response.data;
     },
-
+    staleTime: Infinity,
     ...opt,
   });
 

@@ -17,11 +17,16 @@ export default function LoginForm() {
           {
             onSuccess: (response) => {
               console.log(response);
+              response.data[0].role == "student"
+                ? navigate("/student-panel")
+                : response.data[0].role == "company_owner"
+                ? navigate("/company-panel")
+                : null;
               localStorage.setItem(
                 "personalInfo",
                 JSON.stringify(response.data?.[0])
               );
-              navigate("/");
+              // navigate("/");
             },
           }
         );
