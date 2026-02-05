@@ -29,12 +29,15 @@ const personalInfo = {
     },
   ],
 };
-const info = JSON.parse(localStorage.getItem("personalInfo"));
 
 export default function StudentPanel() {
   const { data, isSuccess, isError } = useGet(
     "student/profile",
-    "getStudentInfo"
+    "getStudentData"
+  );
+  const { data: request, isSuccess: req_status } = useGet(
+    "student/requests",
+    "student-req"
   );
   const navigate = useNavigate();
 
@@ -48,83 +51,85 @@ export default function StudentPanel() {
   }, [isSuccess, isError, data, navigate]);
 
   return (
-    <div className="space-y-6 container mx-auto px-5 xl:px-20" style={{ direction: "rtl" }}>
-      <div className="font-bold text-3xl mb-6">سلام ، {personalInfo.name}</div>
+    <>
+      {isSuccess && req_status ? (
+        <div
+          className="space-y-6 mx-auto px-5 xl:px-20 container"
+          style={{ direction: "rtl" }}
+        >
+          <div className="mb-6 font-bold text-3xl">
+            سلام ، {data.data.full_name}
+          </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
-
-        <div className="lg:col-span-2">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-            <div className="p-4 bg-gray-50 border-b border-gray-200">
-              <h2 className="font-bold text-xl">درخواست‌های ارسالی</h2>
+          <div className="gap-6 grid grid-cols-1 lg:grid-cols-3 w-full">
+            <div className="lg:col-span-2">
+              <div className="bg-white shadow-lg border border-gray-200 rounded-2xl overflow-hidden">
+                <div className="bg-gray-50 p-4 border-gray-200 border-b">
+                  <h2 className="font-bold text-xl">درخواست‌های ارسالی</h2>
+                </div>
+                <div className="p-4 max-h-[600px] overflow-y-auto">
+                  <div className="space-y-4">
+                    {request.data.requests.map((item, index) => (
+                      <RequestStudent
+                        key={index}
+                        comapany={item.advertise_info.company_info.name}
+                        date={item.date}
+                        status={item.status}
+                        titr={item.advertise_info.title}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="p-4 overflow-y-auto max-h-[600px]">
-              <div className="space-y-4">
-                {personalInfo.req.map((item, index) => (
-                  <RequestStudent
-                    key={index}
-                    comapany={item.company}
-                    date={item.date}
-                    status={item.status}
-                    titr={item.titr}
-                  />
-                ))}
+
+            <div className="space-y-6">
+              {/* <div className="bg-white shadow-lg border border-gray-200 rounded-2xl overflow-hidden">
+                <div className="bg-gray-50 p-4 border-gray-200 border-b">
+                  <h2 className="font-bold text-xl">آمار کلی</h2>
+                </div>
+                <div className="p-4">
+                  <div className="gap-2 grid grid-cols-3">
+                    <Box titr="1" body="درخواست" className="text-center" />
+                    <Box titr="3" body="پذیرفته" className="text-center" />
+                    <Box
+                      titr="14"
+                      body="پیشنهادی"
+                      className="col-span-2 text-center"
+                    />
+                  </div>
+                </div>
+              </div> */}
+
+              <div className="bg-white shadow-lg border border-gray-200 rounded-2xl overflow-hidden">
+                <div className="bg-gray-50 p-4 border-gray-200 border-b">
+                  <h2 className="font-bold text-xl">اقدامات سریع</h2>
+                </div>
+                <div className="p-4">
+                  <div className="space-y-3">
+                    <button
+                      onClick={() => navigate("/all")}
+                      className="w-full btn btn--primary"
+                    >
+                      مشاهده همه موقعیت‌ها
+                    </button>
+
+                    <button
+                      onClick={() => navigate("/edit-student")}
+                      className="btn--light"
+                    >
+                      ویرایش پروفایل
+                    </button>
+                    {/* <button className="btn--light">تنظیمات</button> */}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="space-y-6">
-
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-            <div className="p-4 bg-gray-50 border-b border-gray-200">
-              <h2 className="font-bold text-xl">آمار کلی</h2>
-            </div>
-            <div className="p-4">
-              <div className="grid grid-cols-3 gap-2">
-                <Box
-                  titr="1"
-                  body="درخواست"
-                  className="text-center"
-                />
-                <Box
-                  titr="3"
-                  body="پذیرفته"
-                  className="text-center"
-                />
-                <Box
-                  titr="14"
-                  body="پیشنهادی"
-                  className="text-center col-span-2"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-            <div className="p-4 bg-gray-50 border-b border-gray-200">
-              <h2 className="font-bold text-xl">اقدامات سریع</h2>
-            </div>
-            <div className="p-4">
-              <div className="space-y-3">
-                <button className="btn btn--primary w-full">
-                  مشاهده همه موقعیت‌ها
-                </button>
-                <button className="btn--light">
-                  ارسال درخواست جدید
-                </button>
-                <button className="btn--light">
-                  ویرایش پروفایل
-                </button>
-                <button className="btn--light">
-                  تنظیمات
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+      ) : (
+        <div>loading </div>
+      )}
+    </>
   );
 }

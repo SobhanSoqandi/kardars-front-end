@@ -1,56 +1,75 @@
-import React from 'react'
-import Info from '../../../../components/Info';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
-import { CiClock1 } from 'react-icons/ci';
-import { FaCheck, FaMoneyCheckDollar } from 'react-icons/fa6';
-import { FaUserClock, FaUsersCog } from 'react-icons/fa';
-import { TbSettingsCode } from 'react-icons/tb';
-import { IoCheckmarkSharp } from 'react-icons/io5';
-import { GiCheckMark } from 'react-icons/gi';
-import { IoMdCheckboxOutline } from 'react-icons/io';
-import { PiCheckFatBold } from 'react-icons/pi';
+import React, { useContext } from "react";
+import Info from "../../../../components/Info";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { CiClock1 } from "react-icons/ci";
+import { FaCheck, FaMoneyCheckDollar } from "react-icons/fa6";
+import { FaUserClock, FaUsersCog } from "react-icons/fa";
+import { TbSettingsCode } from "react-icons/tb";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { GiCheckMark } from "react-icons/gi";
+import { IoMdCheckboxOutline } from "react-icons/io";
+import { PiCheckFatBold } from "react-icons/pi";
+import useMutationData from "../../../../hooks/useMutationData";
+import Modal, { ModalContext } from "../../../../components/Modal";
+import { useForm } from "react-hook-form";
+import Textarea from "../../../../components/TextArea";
+import { data } from "react-router-dom";
+import StudentReq from "../StudentReq";
 
-function DetailContent() {
+function DetailContent({ info }) {
+  return (
+    <div>
+      <div className="p-5">
+        <h2 className="font-bold text-blue-600 text-2xl"> {info.title}</h2>
+        <h3 className="text-lg"> {info.company_name} </h3>
+      </div>
 
+      <div className="space-y-5 bg-gray-100 m-5 p-5 rounded-xl">
+        <Info
+          icon={<HiOutlineLocationMarker />}
+          titr={"  مکان  "}
+          content={info.company_info.location}
+        />
 
-    const info = [
-        { li: "مهارت کار تیمی و برقراری ارتباط موثر" },
-        { li: "امکان استخدام رسمی پس از پایان دوره کارآموزی" },
-        { li: "   آشنایی با زبان‌های برنامه‌نویسی JavaScript و Python   " },
-        { li: "آشنایی با مفاهیم پایگاه داده (SQL یا NoSQL)" },
-    ]
+        {/* <Info icon={<CiClock1 />} titr={"  مدت  "} content={" 4 ماه  "} /> */}
 
-    return (
-        <div>
-            <div className="p-5" >
-                <h2 className="font-bold text-2xl text-blue-600" > کارآموزی مهندسی نرم‌افزار </h2>
-                <h3 className="text-lg" > شرکت فناوری برتر </h3>
-            </div>
+        {/* <Info
+          icon={<FaMoneyCheckDollar />}
+          titr={"  حقوق  "}
+          content={" توافقی "}
+        /> */}
 
-            <div className="p-5 bg-gray-100 m-5 rounded-xl space-y-5" >
-                <Info icon={<HiOutlineLocationMarker />} titr={"  مکان  "} content={" تهران  خیابان سلطانی "} />
+        {/* <Info
+          icon={<TbSettingsCode />}
+          titr={"  حوضه فعالیت "}
+          content={" توسعه نرم افزار    "}
+        /> */}
 
-                <Info icon={<CiClock1 />} titr={"  مدت  "} content={" 4 ماه  "} />
+        {/* <Info
+          icon={<FaUserClock />}
+          titr={"  نوع ساعت کاری   "}
+          content={" تمام وقت "}
+        /> */}
 
-                <Info icon={<FaMoneyCheckDollar />} titr={"  حقوق  "} content={" توافقی "} />
+        <Info
+          icon={<FaUsersCog />}
+          titr={"  ظرفیت  "}
+          content={info.capacity}
+        />
+      </div>
 
-                <Info icon={<TbSettingsCode />} titr={"  حوضه فعالیت "} content={" توسعه نرم افزار    "} />
+      <div className="p-5">
+        <h4 className="inline-block border-gray-300 border-b-2 text-xl">
+          {" "}
+          توضیحات :{" "}
+        </h4>
+        <p className="py-5 text-gray-500 text-base lg:text-lg">
+          {info.description}
+        </p>
+      </div>
 
-                <Info icon={<FaUserClock />} titr={"  نوع ساعت کاری   "} content={" تمام وقت "} />
-
-                <Info icon={<FaUsersCog />} titr={"  ظرفیت  "} content={" 4 نفر "} />
-            </div>
-
-
-            <div className="p-5" >
-                <h4 className="text-xl inline-block border-b-2 border-gray-300" > توضیحات :  </h4>
-                <p className="text-gray-500 text-base lg:text-lg py-5" > شرکت فناوری برتر به عنوان یکی از پیشگامان حوزه نرم‌افزارهای تحت وب، در نظر دارد دانشجویان مستعد
-                    و باانگیزه رشته مهندسی کامپیوتر را برای کارآموزی در بخش توسعه نرم‌افزار جذب نماید. این فرصت مناسبی
-                    برای دانشجویان است که تجربه کاری واقعی در محیط حرفه‌ای کسب کرده و مهارت‌های فنی خود را ارتقا دهند.  </p>
-            </div>
-
-            <div className="p-5" >
-                <h4 className="text-xl inline-block border-b-2 border-gray-300" >   مسئولیت‌ها و وظایف   :  </h4>
+      {/* <div className="p-5" >
+                <h4 className="inline-block border-gray-300 border-b-2 text-xl" >   مسئولیت‌ها و وظایف   :  </h4>
                 <ul className="space-y-4 pt-5" >
                     {
                         info.map((item) => (
@@ -64,7 +83,7 @@ function DetailContent() {
             </div>
 
             <div className="p-5" >
-                <h4 className="text-xl inline-block border-b-2 border-gray-300" >   مهارت های مورد نیاز  :  </h4>
+                <h4 className="inline-block border-gray-300 border-b-2 text-xl" >   مهارت های مورد نیاز  :  </h4>
                 <ul className="space-y-4 pt-5" >
                     {
                         info.map((item) => (
@@ -78,7 +97,7 @@ function DetailContent() {
             </div>
 
             <div className="p-5" >
-                <h4 className="text-xl inline-block border-b-2 border-gray-300" >   مزایا     :  </h4>
+                <h4 className="inline-block border-gray-300 border-b-2 text-xl" >   مزایا     :  </h4>
                 <ul className="space-y-4 pt-5" >
                     {
                         info.map((item) => (
@@ -89,14 +108,22 @@ function DetailContent() {
                         ))
                     }
                 </ul>
-            </div>
+            </div> */}
 
-            <button className="btn btn--primary m-5 w-[90%] md:w-[25%]" >
-                ارسال درخواست همکاری
-            </button>
+      <Modal>
+        <Modal.Open name={"cover"}>
+          <button className="m-5 w-[90%] md:w-[25%] btn btn--primary">
+            ارسال درخواست همکاری
+          </button>
+        </Modal.Open>
 
-        </div>
-    )
+        <Modal.Window name={"cover"}>
+          <StudentReq id={info.id} />
+          <Modal.Close />
+        </Modal.Window>
+      </Modal>
+    </div>
+  );
 }
 
 export default DetailContent;

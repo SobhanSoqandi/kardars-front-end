@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 .btn {
-  @apply flex justify-center items-center p-3 text-nowrap rounded-xl text-sm md:text-base cursor-pointer;
+  @apply flex justify-center items-center p-3 rounded-xl text-sm md:text-base text-nowrap cursor-pointer;
 }
 
 .contain {
@@ -11,53 +11,51 @@
 }
 
 .li--style {
-  @apply hover:text-blue-500 cursor-pointer hover:border-b-2 border-blue-500 text-xs md:text-lg xl:text-xl;
+  @apply border-blue-500 hover:border-b-2 hover:text-blue-500 text-xs md:text-lg xl:text-xl cursor-pointer;
 }
 
 .tag--style {
-
-  @apply text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px]
+  @apply text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px];
 }
 
 .input--style {
-  @apply bg-gray-50 rounded-xl focus:shadow-md focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white block w-full p-3
+  @apply block bg-gray-100 focus:bg-white focus:shadow-md p-3 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 w-full;
 }
 
 .input-file--style {
-  @apply bg-gray-50 rounded-xl w-full p-2 text-sm text-gray-700 cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white;
+  @apply bg-gray-50 focus:bg-white p-2 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 w-full text-gray-700 text-sm cursor-pointer;
 }
 
 .input-file--style::file-selector-button {
-  @apply bg-blue-500 text-white border-0 rounded-lg px-4 py-2 mx-2 cursor-pointer hover:bg-blue-600 transition;
+  @apply bg-blue-500 hover:bg-blue-600 mx-2 px-4 py-2 border-0 rounded-lg text-white transition cursor-pointer;
 }
 
-
 .mark {
-  @apply rounded-br-2xl rounded-tl-2xl border-b-2 border-t-2 border-blue-500
+  @apply border-blue-500 border-t-2 border-b-2 rounded-tl-2xl rounded-br-2xl;
 }
 
 .btn--primary {
-  @apply bg-blue-500 hover:bg-blue-600 text-white transition duration-200 p-4
+  @apply bg-blue-500 hover:bg-blue-600 p-4 text-white transition duration-200;
 }
 
 .link--style {
-  @apply text-blue-600 hover:text-blue-700 hover:border-b border-r-blue-600 cursor-pointer text-balance
+  @apply border-r-blue-600 hover:border-b text-blue-600 hover:text-blue-700 text-balance cursor-pointer;
 }
 
 .badge--style {
-  @apply xl:p-3 p-2 rounded-xl text-xs xl:text-sm text-white text-center text-nowrap
+  @apply p-2 xl:p-3 rounded-xl text-white text-xs xl:text-sm text-center text-nowrap;
 }
 
 .request--cart {
-  @apply flex justify-between items-start border border-gray-200 p-4 rounded-2xl hover:border-blue-600 hover:shadow-lg hover:shadow-blue-200 cursor-pointer
+  @apply flex justify-between items-start hover:shadow-blue-200 hover:shadow-lg p-4 border border-gray-200 hover:border-blue-600 rounded-2xl cursor-pointer;
 }
 
 .label--style {
-  @apply text-sm font-medium text-gray-700
+  @apply font-medium text-gray-700 text-sm;
 }
 
 .btn--light {
-  @apply w-full py-3 px-4 border border-blue-100 hover:shadow hover:border-blue-500 text-gray-700 font-medium rounded-lg transition duration-200 cursor-pointer
+  @apply hover:shadow px-4 py-3 border border-blue-100 hover:border-blue-500 rounded-lg w-full font-medium text-gray-700 transition duration-200 cursor-pointer;
 }
 
 body {

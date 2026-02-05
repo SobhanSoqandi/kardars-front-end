@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Input from "../../components/Input";
 import { useNavigate } from "react-router-dom";
 import useMutationData from "../../hooks/useMutationData";
+import Select from "../../components/Select";
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm();
@@ -12,24 +13,21 @@ export default function LoginForm() {
     <form
       className="space-y-5"
       onSubmit={handleSubmit((data) => {
-        mutate(
-          { ...data, role: "student" },
-          {
-            onSuccess: (response) => {
-              console.log(response);
-              response.data[0].role == "student"
-                ? navigate("/student-panel")
-                : response.data[0].role == "company_owner"
-                ? navigate("/company-panel")
-                : null;
-              localStorage.setItem(
-                "personalInfo",
-                JSON.stringify(response.data?.[0])
-              );
-              // navigate("/");
-            },
-          }
-        );
+        mutate(data, {
+          onSuccess: (response) => {
+            console.log(response);
+            response.data.data[0].role == "student"
+              ? navigate("/student-panel")
+              : response.data.data[0].role == "company_owner"
+              ? navigate("/company-panel")
+              : null;
+            localStorage.setItem(
+              "personalInfo",
+              JSON.stringify(response.data.data?.[0])
+            );
+            // navigate("/");
+          },
+        });
       })}
     >
       <Input
@@ -46,13 +44,19 @@ export default function LoginForm() {
         label={"رمز عبور :"}
         type="password"
       />
+      <Select
+        register={register}
+        name={"role"}
+        label={"نقش"}
+        opt={["student", "company_owner"]}
+      />
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-1">
           <Input
             className="w-4 h-4"
             type="checkbox"
-            register={register}
-            registerName="remember"
+            // register={register}
+            // registerName="remember"
           />
           <span className="text-gray-700 whitespace-nowrap">
             مرا به خاطر بسپار
@@ -60,7 +64,7 @@ export default function LoginForm() {
         </div>
         <div className="link--style">فراموشی رمز ؟</div>
       </div>
-      <button className="btn btn--primary w-full" type="submit">
+      <button className="w-full btn btn--primary" type="submit">
         ورود
       </button>
       <div

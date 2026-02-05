@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 import useMutationData from "../../hooks/useMutationData";
 
-
 const info = [
   //   {
   //     name: " تحلیل‌گران داده",
@@ -25,29 +24,8 @@ const info = [
   //   },
 ];
 
-
-
 export default function Internships() {
-
   const navigate = useNavigate();
-
-
-  return (
-    <div className="flex flex-col justify-center items-center gap-5">
-      <div className="font-bold text-[19px] md:text-[22px] lg:text-[25px]">آخرین فرصت‌های کارآموزی</div>
-      <div className="flex flex-col justify-center items-center gap-14">
-        {" "}
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5">
-          {info.map((item) => (
-            <InternshipsCart info={item} />
-          ))}
-        </div>
-        <div
-          onClick={() => navigate("/all")}
-          className="text-blue-600 border border-blue-600 btn ">
-          مشاهده همه موقعیت‌ها
-
-export default function Internships() {
   const {
     mutate: getAdvertisements,
     data: advertisements,
@@ -56,7 +34,6 @@ export default function Internships() {
   useEffect(() => {
     getAdvertisements({});
   }, []);
-
   return (
     <>
       {isSuccess ? (
@@ -71,11 +48,13 @@ export default function Internships() {
                 <InternshipsCart info={item} />
               ))}
             </div>
-            <div className="border border-blue-600 text-blue-600 btn">
+            <div
+              onClick={() => navigate("/all")}
+              className="border border-blue-600 text-blue-600 btn"
+            >
               مشاهده همه موقعیت‌ها
             </div>
           </div>
-
         </div>
       ) : (
         <div>loading</div>
