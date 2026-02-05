@@ -14,6 +14,10 @@ export default function CompanyPenel() {
     "owner_company/profile",
     "getCompany_Info"
   );
+  useEffect(() => {
+    isSuccess ? console.log(data) : "";
+  }, [isSuccess]);
+
   return (
     <>
       {isSuccess ? (

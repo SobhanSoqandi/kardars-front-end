@@ -1,51 +1,56 @@
-import React from 'react'
-import Input from '../../components/Input';
-import Select from '../../components/Select';
-import InternshipsCart from '../../components/InternshipsCart';
+import React, { useEffect } from "react";
+import Input from "../../components/Input";
+import Select from "../../components/Select";
+import InternshipsCart from "../../components/InternshipsCart";
+import useMutationData from "../../hooks/useMutationData";
+import useGet from "../../hooks/useGet";
 
 function AllCompany() {
+  // const info = [
+  //   {
+  //     name: " تحلیل‌گران داده",
+  //     time: " 4 ماه",
+  //     discription:
+  //       "فرصت کارآموزی در زمینه علوم داده و یادگیری ماشین برای دانشجویان علاقه‌مند.",
+  //     location: " تهران",
+  //     titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
+  //   },
+  //   {
+  //     name: " تحلیل‌گران داده",
+  //     time: " 4 ماه",
+  //     discription:
+  //       "فرصت کارآموزی در زمینه علوم داده و یادگیری ماشین برای دانشجویان علاقه‌مند.",
+  //     location: " تهران",
+  //     titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
+  //   },
+  // ];
 
-  const info = [
-    {
-      name: " تحلیل‌گران داده",
-      time: " 4 ماه",
-      discription:
-        "فرصت کارآموزی در زمینه علوم داده و یادگیری ماشین برای دانشجویان علاقه‌مند.",
-      location: " تهران",
-      titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
-    },
-    {
-      name: " تحلیل‌گران داده",
-      time: " 4 ماه",
-      discription:
-        "فرصت کارآموزی در زمینه علوم داده و یادگیری ماشین برای دانشجویان علاقه‌مند.",
-      location: " تهران",
-      titr: "کارآموزی داده‌کاوی در شرکت تحلیل‌گران داده",
-    },
-  ];
-
-
-
-
-
+  const { isSuccess, data: advertisements } = useGet(
+    "student/advertisements",
+    "getadvertisements"
+  );
   return (
-    <div className="container mx-auto" dir='rtl' >
-      <div className=" mx-5 xl:mx-32 p-2 py-10" >
-        <h1 className="font-bold text-xl" > فرصت‌های کارآموزی </h1>
-        <h2 className="text-gray-600 text-sm " > فرصت‌های شغلی مناسب برای دانشجویان و فارغ‌التحصیلان </h2>
-      </div>
+    <>
+      {isSuccess ? (
+        <div className="mx-auto container" dir="rtl">
+          <div className="mx-5 xl:mx-32 p-2 py-10">
+            <h1 className="font-bold text-xl"> فرصت‌های کارآموزی </h1>
+            <h2 className="text-gray-600 text-sm">
+              {" "}
+              فرصت‌های شغلی مناسب برای دانشجویان و فارغ‌التحصیلان{" "}
+            </h2>
+          </div>
 
-      <div className="flex-1 md:flex space-y-5 justify-between gap-5 p-5 shadow-lg mx-5 xl:mx-32 rounded-xl" >
+          <div className="md:flex flex-1 justify-between gap-5 space-y-5 shadow-lg mx-5 xl:mx-32 p-5 rounded-xl">
+            <div className="w-full lg:w-1/2">
+              <Input
+                label="جستحو"
+                placeholder=" عنوان شغلی یا نام شرکت . . . "
+                className="border border-blue-300 w-full input--style"
+              />
+            </div>
 
-        <div className="w-full lg:w-1/2" >
-          <Input
-            label="جستحو"
-            placeholder=" عنوان شغلی یا نام شرکت . . . "
-            className="input--style w-full border border-blue-300"
-          />
-        </div>
-
-        {/* <div className="w-full" >
+            {/* <div className="w-full" >
           <Select
             label="دسته بندی"
             width={"100%"}
@@ -54,20 +59,19 @@ function AllCompany() {
             name={"caategory"}
           />
         </div> */}
+          </div>
 
-      </div>
-
-
-      
-        <div className="grid grid-cols-1 my-16 md:grid-cols-2 items-center gap-5 xl:mx-32">
-          {info.map((item) => (
-            <InternshipsCart info={item} />
-          ))}
+          <div className="items-center gap-5 grid grid-cols-1 md:grid-cols-2 xl:mx-32 my-16">
+            {advertisements.data.advertisements.map((item) => (
+              <InternshipsCart info={item} />
+            ))}
+          </div>
         </div>
-     
-
-    </div>
-  )
+      ) : (
+        <div>loading</div>
+      )}
+    </>
+  );
 }
 
 export default AllCompany;

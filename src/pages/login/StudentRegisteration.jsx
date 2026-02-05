@@ -3,17 +3,26 @@ import Input from "../../components/Input";
 import Select from "../../components/Select";
 import Textarea from "../../components/TextArea";
 import useMutationData from "../../hooks/useMutationData";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function StudentRegisteration() {
   const inputStyle =
     "bg-gray-100 rounded-xl focus:shadow-md focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white block w-full p-3";
   const labelStyle = "text-sm font-medium text-gray-700";
   const { register, handleSubmit } = useForm();
-  const { mutate, isPending, error } = useMutationData(
+  const { mutate, isSuccess, data } = useMutationData(
     "auth/register",
     "post",
     "reg-toast"
   );
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isSuccess) {
+      console.log(data);
+      navigate(`/verify?phone=${JSON.parse(data.config.data).mobile}`);
+    }
+  }, [isSuccess]);
   return (
     <div className="shadow shadow-gray-400">
       <div className="pt-10 font-bold text-xl text-center">

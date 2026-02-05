@@ -1,39 +1,26 @@
-import React from "react";
-
 export default function Select({
   opt = [],
-  register = null,
-  height,
+  register,
   name,
-  fn,
-  value,
   width,
+  height,
   label,
 }) {
-  const selectProps = register != null ? register(name) : {};
   return (
-    <div className="flex flex-col items-start gap-2" >
-
-      <div className="flex justify-between items-center">
-        <h4 htmlFor={label}>
-          {label}
-        </h4>
-        {/* {headerOpt} */}
-      </div>
+    <div className="flex flex-col items-start gap-2">
+      <label>{label}</label>
 
       <select
-        style={{ width: width, height: height }}
-        value={value}
-        onChange={(e) => fn(e.currentTarget.value)}
-        {...selectProps}
-        className="pr-2 input--style appearance-none"
+        style={{ width, height }}
+        {...register(name)}
+        className="pr-2 appearance-none input--style"
       >
-        {/* <option value="" hidden>
-          Fillter{" "}
-        </option> */}
-        {opt.map((item) => {
-          return <option value={item}>{item}</option>;
-        })}
+        <option value="">انتخاب کنید</option>
+        {opt.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))}
       </select>
     </div>
   );

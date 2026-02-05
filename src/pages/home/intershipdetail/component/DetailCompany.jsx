@@ -1,72 +1,100 @@
-import React from 'react'
-import ContentPanel from '../../../../components/ContentPanel'
-import Info from '../../../../components/Info'
-import { AiOutlineGlobal } from 'react-icons/ai'
-import { FaUsersCog } from 'react-icons/fa'
-import { TbSettingsCode } from 'react-icons/tb'
-import DetailContent from './DetailContent'
+import React, { useEffect } from "react";
+import ContentPanel from "../../../../components/ContentPanel";
+import Info from "../../../../components/Info";
+import { AiOutlineGlobal } from "react-icons/ai";
+import { FaUsersCog } from "react-icons/fa";
+import { TbSettingsCode } from "react-icons/tb";
+import DetailContent from "./DetailContent";
+import { data, useSearchParams } from "react-router-dom";
+
+import useGet from "../../../../hooks/useGet";
 
 function DetailCompany() {
-    return (
-        <div style={{ direction: "rtl" }}
-            className="grid grid-cols-1 xl:grid-cols-3 items-start gap-5 w-full container mx-auto px-4 lg:px-20">
-            <div className="xl:col-span-2 shadow shadow-gray-400 rounded-2xl">
-                <DetailContent />
-            </div>
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
+  const { isSuccess, data: info } = useGet(
+    `student/advertisements/show/${id}`,
+    "show-advertisements"
+  );
+  useEffect(() => {
+    isSuccess ? console.log(info) : null;
+  }, [isSuccess, info]);
+  return (
+    <>
+      {isSuccess ? (
+        <div
+          style={{ direction: "rtl" }}
+          className="relative items-start gap-5 grid grid-cols-1 xl:grid-cols-3 mx-auto px-4 lg:px-20 w-full container"
+        >
+          <div className="xl:col-span-2 shadow shadow-gray-400 rounded-2xl">
+            <DetailContent info={info.data.advertise} />
+          </div>
 
+          <div className="flex flex-col flex-1 gap-5 col-span-1">
+            <ContentPanel label=" موقعیت‌های شما  ">
+              <div className="space-y-2 p-5">
+                <h2 className="font-bold text-xl">
+                  {" "}
+                  {info.data.advertise.company_name}{" "}
+                </h2>
+                <p className="text-gray-500">
+                  {info.data.advertise.company_info.description}
+                </p>
+              </div>
 
+              <div className="space-y-3 p-5">
+                {/* <Info
+                  icon={<AiOutlineGlobal />}
+                  titr={"  وب سایت "}
+                  content={" www.kardars.ir "}
+                /> */}
 
-            <div className="flex-1 flex flex-col col-span-1 gap-5">
+                <Info
+                  icon={<FaUsersCog />}
+                  titr={"  ظرفیت  "}
+                  content={info.data.advertise.capacity}
+                />
 
-                <ContentPanel
-                    label=" موقعیت‌های شما  "
-                >
+                <Info
+                  icon={<TbSettingsCode />}
+                  titr={"  صنعت  "}
+                  content={" پتروشیمی "}
+                />
+              </div>
+            </ContentPanel>
 
-                    <div className="p-5 space-y-2" >
-                        <h2 className="text-xl font-bold" > نام شرکت </h2>
-                        <p className="text-gray-500" > توضحاتی که در مورد این موقعیت شرکت نشوته شده است </p>
-                    </div>
-
-                    <div className="p-5 space-y-3" >
-                        <Info icon={<AiOutlineGlobal />} titr={"  وب سایت "} content={" www.kardars.ir "} />
-
-                        <Info icon={<FaUsersCog />} titr={"  ظرفیت  "} content={" 10 نفر "} />
-
-                        <Info icon={<TbSettingsCode />} titr={"  صنعت  "} content={" پتروشیمی "} />
-                    </div>
-
-                </ContentPanel>
-
-                <ContentPanel
+            {/* <ContentPanel
                     label=" موقعیت های مشابه "
                 >
                     <div className="flex flex-col gap-10 p-4">
 
 
                         <div>
-                            <h2 className="text-blue-500 font-bold text-xl cursor-pointer" > کارآموزی توسعه وب </h2>
-                            <p className="text-gray-500 py-5" > استارتاپ دیجیتال </p>
+                            <h2 className="font-bold text-blue-500 text-xl cursor-pointer" > کارآموزی توسعه وب </h2>
+                            <p className="py-5 text-gray-500" > استارتاپ دیجیتال </p>
                             <hr className="text-gray-200" />
                         </div>
                         <div >
-                            <h2 className="text-blue-500 font-bold text-xl cursor-pointer" > کارآموزی توسعه وب </h2>
-                            <p className="text-gray-500 py-5" > استارتاپ دیجیتال </p>
+                            <h2 className="font-bold text-blue-500 text-xl cursor-pointer" > کارآموزی توسعه وب </h2>
+                            <p className="py-5 text-gray-500" > استارتاپ دیجیتال </p>
                             <hr className="text-gray-200" />
                         </div>
 
                         <div>
-                            <h2 className="text-blue-500 font-bold text-xl cursor-pointer" > کارآموزی توسعه وب </h2>
-                            <p className="text-gray-500 py-5" > استارتاپ دیجیتال </p>
+                            <h2 className="font-bold text-blue-500 text-xl cursor-pointer" > کارآموزی توسعه وب </h2>
+                            <p className="py-5 text-gray-500" > استارتاپ دیجیتال </p>
                         </div>
 
 
                     </div>
-                </ContentPanel>
-
-            </div>
-
+                </ContentPanel> */}
+          </div>
         </div>
-    )
+      ) : (
+        <div>loading</div>
+      )}
+    </>
+  );
 }
 
-export default DetailCompany
+export default DetailCompany;

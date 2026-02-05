@@ -7,7 +7,7 @@ export default function useMutationData(url, method, toastId, opt = {}) {
   const { mutate, isPending, data, isSuccess, isError, error } = useMutation({
     mutationFn: async (info) => {
       const response = await api[method.toLowerCase()](`/${url}`, info);
-      return response.data;
+      return response;
     },
     onSuccess: (responseData) => {
       toast.success("عملیات با موفقیت انجام شد", { id: toastId });

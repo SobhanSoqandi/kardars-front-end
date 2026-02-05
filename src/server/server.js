@@ -9,7 +9,7 @@ export const api = axios.create({
   withCredentials: false,
   headers: {
     apikey: apikey,
-    "Content-Type": "application/json",
+    // "Content-Type": "application/json",
   },
 });
 
@@ -29,11 +29,13 @@ api.interceptors.response.use(
     if (response.config.method !== "get") {
       toast.success("عملیات با موفقیت انجام شد");
     }
+    console.log(response);
     return response;
   },
   (error) => {
-    const message = error.response?.data?.message || "خطایی رخ داده است";
-    toast.error(message);
+    //const message = error.response?.data?.message || "خطایی رخ داده است";
+    console.log(error);
+    // toast.error(message);
     return Promise.reject(error);
   }
 );
