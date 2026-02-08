@@ -4,6 +4,7 @@ import Select from "../../components/Select";
 import InternshipsCart from "../../components/InternshipsCart";
 import useMutationData from "../../hooks/useMutationData";
 import useGet from "../../hooks/useGet";
+import Loading from "../../components/Loading";
 
 function AllCompany() {
   // const info = [
@@ -68,7 +69,9 @@ function AllCompany() {
           </div>
         </div>
       ) : (
-        <div>loading</div>
+        <div>
+          <Loading />
+        </div>
       )}
     </>
   );

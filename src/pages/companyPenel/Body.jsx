@@ -6,6 +6,7 @@ import useGet from "../../hooks/useGet";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal";
 import CreatReq from "./component/CreatReq";
+import Loading from "../../components/Loading";
 
 export default function Body({ comapany }) {
   const { data, isSuccess } = useGet("owner_company/advertisements", "company");
@@ -83,7 +84,7 @@ export default function Body({ comapany }) {
           </div>
         </div>
       ) : (
-        <div> loading</div>
+        <Loading />
       )}
     </>
   );

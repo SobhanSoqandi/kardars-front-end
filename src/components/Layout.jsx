@@ -6,12 +6,15 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <div className="space-y-[50px]">
+      <div className="min-h-screen flex flex-col">
       <Header />
 
-       <Outlet />
+      <main className="flex-grow flex flex-row my-5 mx-auto">
+        <Outlet />
+      </main>
 
       <Footer />
     </div>
+
   );
 }

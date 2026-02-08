@@ -8,6 +8,7 @@ import DetailContent from "./DetailContent";
 import { data, useSearchParams } from "react-router-dom";
 
 import useGet from "../../../../hooks/useGet";
+import Loading from "../../../../components/Loading";
 
 function DetailCompany() {
   const [searchParams] = useSearchParams();
@@ -91,7 +92,9 @@ function DetailCompany() {
           </div>
         </div>
       ) : (
-        <div>loading</div>
+        <div>
+          <Loading />
+        </div>
       )}
     </>
   );
