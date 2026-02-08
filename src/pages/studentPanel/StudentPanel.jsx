@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import RequestStudent from "./RequestStudent";
 import Box from "../companyPenel/component/Box";
 import ContentPanel from "../../components/ContentPanel";
+import Loading from "../../components/Loading";
 
 const personalInfo = {
   name: "علی احمدی",
@@ -128,7 +129,9 @@ export default function StudentPanel() {
           </div>
         </div>
       ) : (
-        <div>loading </div>
+        <div>
+          <Loading />
+        </div>
       )}
     </>
   );

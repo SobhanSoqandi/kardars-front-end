@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Box from "./component/Box";
 import Body from "./Body";
 import useGet from "../../hooks/useGet";
+import Loading from "../../components/Loading";
 const companyInfo = {
   name: "",
   position: 5,
@@ -52,7 +53,9 @@ export default function CompanyPenel() {
           <Body comapany={companyInfo} />
         </div>
       ) : (
-        <div>loading</div>
+        <div>
+          <Loading />
+        </div>
       )}
     </>
   );

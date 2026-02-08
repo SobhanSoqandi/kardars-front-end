@@ -4,6 +4,7 @@ import InternshipsCart from "../../components/InternshipsCart";
 import { useNavigate } from "react-router-dom";
 
 import useMutationData from "../../hooks/useMutationData";
+import Loading from "../../components/Loading";
 
 const info = [
   //   {
@@ -57,7 +58,7 @@ export default function Internships() {
           </div>
         </div>
       ) : (
-        <div>loading</div>
+        <Loading />
       )}
     </>
   );
