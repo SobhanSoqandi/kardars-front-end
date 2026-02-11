@@ -14,13 +14,14 @@ export default function useMutationData(url, method, toastId, opt = {}) {
       if (opt?.onSuccess) opt.onSuccess(responseData);
     },
     onError: (error) => {
-      console.error("Server Validation Error:", error.response?.data);
-      const errMsg = error.response?.data?.message || error.message;
-      toast.error(errMsg, { id: toastId });
-
-      if (opt?.onError) {
-        opt.onError(error);
+      const msgData = error?.response?.data?.message;
+      let message = "خطایی رخ داده است";
+      if (typeof msgData === "string") message = msgData;
+      else if (typeof msgData === "object") {
+        message = Object.values(msgData).flat().join("\n");
       }
+      toast.error(message);
+      opt?.onError?.(error);
     },
     ...opt,
   });

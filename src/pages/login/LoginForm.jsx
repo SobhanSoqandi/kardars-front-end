@@ -6,7 +6,11 @@ import useMutationData from "../../hooks/useMutationData";
 import Select from "../../components/Select";
 
 export default function LoginForm() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const { mutate } = useMutationData("auth/login", "post", "loginToast");
   return (
@@ -15,17 +19,25 @@ export default function LoginForm() {
       onSubmit={handleSubmit((data) => {
         mutate(data, {
           onSuccess: (response) => {
-            console.log(response);
-            response.data.data[0].role == "student"
-              ? navigate("/student-panel")
-              : response.data.data[0].role == "company_owner"
-              ? navigate("/company-panel")
-              : null;
-            localStorage.setItem(
-              "personalInfo",
-              JSON.stringify(response.data.data?.[0])
-            );
-            // navigate("/");
+            // Check if response has the expected structure
+            if (response?.data?.data && response.data.data.length > 0) {
+              const userData = response.data.data[0];
+              const role = userData?.role;
+
+              if (role === "student") {
+                navigate("/student-panel");
+              } else if (role === "company_owner") {
+                navigate("/company-panel");
+              } else {
+                // Handle case where role is not recognized
+                console.error("Unexpected role received:", role);
+              }
+
+              localStorage.setItem("personalInfo", JSON.stringify(userData));
+            } else {
+              // Handle unexpected response structure
+              console.error("Unexpected response structure:", response);
+            }
           },
         });
       })}
@@ -49,6 +61,8 @@ export default function LoginForm() {
         name={"role"}
         label={"نقش"}
         opt={["student", "company_owner"]}
+        errors={errors}
+        required={true}
       />
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-1">

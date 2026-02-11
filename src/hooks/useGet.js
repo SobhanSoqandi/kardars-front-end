@@ -1,30 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-
-import { useEffect } from "react";
 import { api } from "../server/server";
 import toast from "react-hot-toast";
 
-export default function useGet(url, queryName, opt = {}) {
-  const query = useQuery({
-    queryKey: [queryName],
+export default function useGet(url, queryKey, options = {}) {
+  return useQuery({
+    queryKey: [queryKey],
     queryFn: async () => {
-      const response = await api.get(`/${url}`);
-      return response.data;
+      const { data } = await api.get(`/${url}`);
+      return data;
     },
-    staleTime: Infinity,
-    ...opt,
+    staleTime: 0,
+    onError: (error) => {
+      toast.error(error?.response?.data?.message || error.message);
+      options?.onError?.(error);
+    },
+    onSuccess: (data) => {
+      options?.onSuccess?.(data);
+    },
+    ...options,
   });
-
-  const { data, isLoading, isSuccess, isError, error } = query;
-
-  useEffect(() => {
-    if (isError && error) {
-      toast.error(error.response?.data?.message || error.message, {
-        toastId: queryName,
-      });
-      if (opt?.onError) opt.onError(error);
-    }
-  }, [isError, error, queryName]);
-
-  return { data, isLoading, isSuccess, isError, error };
 }

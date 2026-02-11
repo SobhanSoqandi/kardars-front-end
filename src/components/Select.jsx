@@ -15,7 +15,7 @@ export default function Select({
         {...register(name)}
         className="pr-2 appearance-none input--style"
       >
-        <option value="">انتخاب کنید</option>
+        <option value="no_role">انتخاب کنید</option>
         {opt.map((item) => (
           <option key={item} value={item}>
             {item}

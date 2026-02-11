@@ -21,6 +21,7 @@ import CheckOtp from "./pages/login/CheckOtp";
 function App() {
   return (
     <>
+      <Toaster position="top-center" />
       <Routes>
         <Route element={<Layout />} path="/">
           <Route element={<Home />} index />

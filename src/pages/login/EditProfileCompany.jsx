@@ -4,10 +4,16 @@ import Select from "../../components/Select";
 import Textarea from "../../components/TextArea";
 import { useForm } from "react-hook-form";
 import useGet from "../../hooks/useGet";
+import useMutationData from "../../hooks/useMutationData";
 
 function EditProfileCompany() {
-  const { register, reset } = useForm();
+  const { register, reset, handleSubmit } = useForm();
   const { data, isSuccess } = useGet("owner_company/profile", "get-profile");
+  const { mutate } = useMutationData(
+    "owner_company/profile/update",
+    "post",
+    "update-profile",
+  );
   useEffect(() => {
     if (isSuccess)
       reset({
@@ -16,6 +22,10 @@ function EditProfileCompany() {
         first_name: data.data.first_name,
         mobile: data.data.mobile,
         national_code: data.data.national_code,
+        phone: data.data.extra_data.phone,
+        location: data.data.extra_data.location,
+        description: data.data.extra_data.description,
+        registration_number: data.data.extra_data.registration_number,
       });
   }, [isSuccess, data]);
   const inputStyle =
@@ -125,6 +135,9 @@ function EditProfileCompany() {
               <div className="flex justify-center gap-4 mt-8">
                 <button
                   type="submit"
+                  onClick={handleSubmit((data) => {
+                    mutate(data);
+                  })}
                   className="bg-blue-500 hover:bg-blue-600 w-full text-white transition btn"
                 >
                   ذخیره تغییرات
