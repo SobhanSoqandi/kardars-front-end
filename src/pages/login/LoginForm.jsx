@@ -7,6 +7,9 @@ import Select from "../../components/Select";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 export default function LoginForm() {
+
+  const [show ,setShow] = useState();
+
   const {
     register,
     handleSubmit,

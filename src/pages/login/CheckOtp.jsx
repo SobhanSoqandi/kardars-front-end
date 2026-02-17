@@ -27,8 +27,8 @@ function CheckOtp({ onBack }) {
   }, [isSuccess]);
   return (
     <div>
-      <div className="flex justify-center items-center px-4 w-full">
-        <div className="p-8 rounded-xl w-full">
+      <div className="flex justify-center items-center px-4 w-96 mx-auto lg:mt-20">
+        <div className="p-8 rounded-xl">
           <div className="relative flex justify-center items-center text-center">
             <button
               onClick={onBack}
@@ -38,7 +38,7 @@ function CheckOtp({ onBack }) {
             </button>
             <a className="text-blue-600 text-2xl logo"> کاردرس </a>
           </div>
-          <div className="flex py-10 w-80">
+          <div className="flex py-10">
             <p className="text-gray-500">
               {" "}
               کد تایید به شماره {phone} ارسال شد{" "}
