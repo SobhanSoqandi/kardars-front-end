@@ -20,7 +20,6 @@ export default function Header() {
               <BiUser className="text-sm md:text-xl lg:text-2xl" />
             </li>
           )}
-          <li className="li--style">خانه</li>
           <li className="li--style">موقعیت‌های کارآموزی</li>
         </ul>
         <div className="font-bold text-[#2563eb] text-sm md:text-2xl logo">
