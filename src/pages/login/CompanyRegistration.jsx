@@ -25,7 +25,7 @@ export default function CompanyRegistration() {
     }
   }, [isSuccess]);
   return (
-    <div>
+    <div className="mx-auto" >
       <div className="pt-10 font-bold text-xl text-center"> ثبت‌ نام شرکت </div>
       <div>
         <div className="flex justify-center items-center">

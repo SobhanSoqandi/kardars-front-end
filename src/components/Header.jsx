@@ -2,8 +2,12 @@ import React from "react";
 import { BiUser } from "react-icons/bi";
 import checkUser from "../function/checkUser";
 import getUserInfo from "../function/getUserInfo";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+
+  const navigate = useNavigate();
+
   const userInfo = getUserInfo();
   return (
     <header className="shadow">
@@ -20,9 +24,13 @@ export default function Header() {
               <BiUser className="text-sm md:text-xl lg:text-2xl" />
             </li>
           )}
-          <li className="li--style">موقعیت‌های کارآموزی</li>
+          <li 
+          onClick={() => navigate("/all") }
+          className="li--style">موقعیت‌های کارآموزی</li>
         </ul>
-        <div className="font-bold text-[#2563eb] text-sm md:text-2xl logo">
+        <div 
+        onClick={() => navigate("/")}
+        className="font-bold text-[#2563eb] text-sm md:text-2xl logo">
           کاردرس
         </div>
       </div>

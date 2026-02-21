@@ -9,7 +9,7 @@ export default function Layout() {
       <div className="min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-grow flex flex-row my-5 mx-auto">
+      <main className="flex-grow flex my-5 container mx-auto">
         <Outlet />
       </main>
 
