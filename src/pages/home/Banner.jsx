@@ -21,7 +21,7 @@ export default function Banner({ userLogin }) {
       ) : (
         <div className="flex items-center gap-2">
           <div 
-          onClick={() => navigate("login")}
+
           className="bg-transparent border-2 border-white text-white text-nowrap btn">
             ورود | ثبت‌نام شرکت
           </div>
