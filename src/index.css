@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 .btn {
-  @apply flex justify-center items-center p-3 rounded-xl text-sm md:text-base text-nowrap cursor-pointer;
+  @apply flex justify-center items-center p-2 rounded-xl text-sm md:text-base text-nowrap cursor-pointer;
 }
 
 .contain {

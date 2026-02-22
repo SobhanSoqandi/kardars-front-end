@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Banner({ userLogin }) {
+
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col justify-center items-center gap-8 bg-blue-600 bg-gradient-to-r from-blue-900 to-violet-500 py-16 w-full">
       <div className="space-y-5">
@@ -17,10 +21,13 @@ export default function Banner({ userLogin }) {
       ) : (
         <div className="flex items-center gap-2">
           <div 
+
           className="bg-transparent border-2 border-white text-white text-nowrap btn">
             ورود | ثبت‌نام شرکت
           </div>
-          <div className="bg-white border-2 border-white text-[#2563eb] text-nowrap btn">
+          <div 
+          onClick={() => navigate("login")}
+          className="bg-white border-2 border-white text-[#2563eb] text-nowrap btn">
             ورود | ثبت‌نام دانشجو
           </div>
         </div>
