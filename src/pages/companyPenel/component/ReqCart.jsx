@@ -24,7 +24,7 @@ export default function ReqCart({ name, position, major, date, id }) {
           <Info titr={"تاریخ"} content={date} />
         </div>
       </div>
-      <div className="flex flex-row md:flex-col justify-between items-center gap-2 space-y-2 pt-4 md:pt-2">
+      {/* <div className="flex flex-row md:flex-col justify-between items-center gap-2 space-y-2 pt-4 md:pt-2">
         <div className="bg-blue-400 w-full badge--style"> مشاهده رزومه </div>
         <div
           onClick={() => {
@@ -44,7 +44,14 @@ export default function ReqCart({ name, position, major, date, id }) {
           {" "}
           رد درخواست{" "}
         </div>
+      </div> */}
+
+      <div>
+        <button className="btn btn--primary" >
+            مشاهده جزئیات پروژه
+        </button>
       </div>
+
     </div>
   );
 }
