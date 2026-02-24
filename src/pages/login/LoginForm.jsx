@@ -7,8 +7,7 @@ import Select from "../../components/Select";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 export default function LoginForm() {
-
-  const [show ,setShow] = useState();
+  const [show, setShow] = useState();
 
   const {
     register,
@@ -32,6 +31,8 @@ export default function LoginForm() {
                 navigate("/student-panel");
               } else if (role === "company_owner") {
                 navigate("/company-panel");
+              } else if (role == "department_head") {
+                navigate("/groupmanager-panel");
               } else {
                 // Handle case where role is not recognized
                 console.error("Unexpected role received:", role);
@@ -54,7 +55,6 @@ export default function LoginForm() {
         placeholder={""}
       />
       <div style={{ position: "relative" }}>
-
         <Input
           register={register}
           className="input--style"
@@ -62,7 +62,6 @@ export default function LoginForm() {
           label={"رمز عبور :"}
           type={show ? "text" : "password"}
         />
-
 
         <span
           onClick={() => setShow(!show)}
@@ -72,19 +71,21 @@ export default function LoginForm() {
             top: "68%",
             transform: "translateY(-50%)",
             cursor: "pointer",
-            userSelect: "none"
+            userSelect: "none",
           }}
         >
-          {show ? <FaEyeSlash className="text-blue-600" />
-            : <FaRegEye className="text-blue-600" />
-          }
+          {show ? (
+            <FaEyeSlash className="text-blue-600" />
+          ) : (
+            <FaRegEye className="text-blue-600" />
+          )}
         </span>
       </div>
       <Select
         register={register}
         name={"role"}
         label={"نقش"}
-        opt={["student", "company_owner"]}
+        opt={["student", "company_owner", "department_head"]}
         errors={errors}
         required={true}
       />
@@ -93,8 +94,8 @@ export default function LoginForm() {
           <Input
             className="w-4 h-4"
             type="checkbox"
-          // register={register}
-          // registerName="remember"
+            // register={register}
+            // registerName="remember"
           />
           <span className="text-gray-700 whitespace-nowrap">
             مرا به خاطر بسپار

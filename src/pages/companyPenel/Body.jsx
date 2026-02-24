@@ -12,7 +12,7 @@ export default function Body({ comapany }) {
   const { data, isSuccess } = useGet("owner_company/advertisements", "company");
   const { data: request, isSuccess: isSuccessfull } = useGet(
     "owner_company/requests",
-    "comapny_advertisements"
+    "comapny_advertisements",
   );
   const navigate = useNavigate();
 
@@ -29,6 +29,8 @@ export default function Body({ comapany }) {
               <div className="space-y-2 px-6 py-3 h-[600px] overflow-y-scroll">
                 {request?.data?.requests.map((item) => (
                   <ReqCart
+                    status={item.status}
+                    cover={item.cover_letter}
                     id={item.id}
                     name={
                       item.student_info.first_name +

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "../../components/Select";
 import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
@@ -6,6 +6,8 @@ import Textarea from "../../components/TextArea";
 import useGet from "../../hooks/useGet";
 import useMutationData from "../../hooks/useMutationData";
 import { useNavigate } from "react-router-dom";
+import getUserInfo from "../../function/getUserInfo";
+import { url } from "../../server/server";
 
 function EditProfileStudent() {
   //   const personalinfo = [
@@ -23,7 +25,7 @@ function EditProfileStudent() {
   const { mutate } = useMutationData(
     "student/profile/update",
     "post",
-    "update-personal-info"
+    "update-personal-info",
   );
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
@@ -37,7 +39,7 @@ function EditProfileStudent() {
         student_code: data.data.extra_data?.student_number,
         year_of_entry: data.data.extra_data?.entry_year,
         major: data.data.extra_data?.major,
-        bio: data.data.extra_data?.bio,
+        bio: data.data.extra_data?.bio ?? "",
       });
     }
   }, [isSuccess, data]);
@@ -58,6 +60,7 @@ function EditProfileStudent() {
               onSubmit={handleSubmit((data) => {
                 // // mutate(data);
                 // console.log({ ...data, avatar: data.avatar[0] });
+                console.log(typeof data.bio, data.bio);
                 const fd = new FormData();
                 fd.append("first_name", data.first_name);
                 fd.append("last_name", data.last_name);
@@ -68,11 +71,32 @@ function EditProfileStudent() {
                 }
                 fd.append("student_code", data.student_code);
                 fd.append("major", data.major ?? "");
-                fd.append("bio", data.bio ?? "");
+                if (data.bio.length > 0) {
+                  fd.append("bio", data.bio);
+                }
+                if (data.resume?.length > 0) {
+                  fd.append("resume_file", data.resume[0]);
+                }
                 if (data.avatar && data.avatar.length > 0) {
                   fd.append("avatar", data.avatar[0]);
                 }
-                mutate(fd);
+                mutate(fd, {
+                  onSuccess: (response) => {
+                    const newData = response?.data.data[0];
+                    const oldData = getUserInfo();
+                    const updatedUser = {
+                      ...oldData,
+                      fullname: newData.full_name,
+                      avatar: newData.avatar,
+                      mobile: newData.mobile,
+                    };
+
+                    localStorage.setItem(
+                      "personalInfo",
+                      JSON.stringify(updatedUser),
+                    );
+                  },
+                });
               })}
               className="space-y-6"
             >
@@ -176,7 +200,29 @@ function EditProfileStudent() {
                   className="input-file--style"
                   lableClassName="label--style"
                 />
+                <Input
+                  label="آپلود رزومه (PDF)"
+                  type="file"
+                  accept=".pdf"
+                  registerName="resume"
+                  className="input-file--style"
+                  lableClassName="label--style"
+                  register={register}
+                />
               </div>
+              {data?.data?.extra_data.have_resume_file ? (
+                <div
+                  onClick={() => {
+                    window.open(
+                      url +
+                        `${`/api/student/profile/download-resume-file/${data?.data.id}`}`,
+                    );
+                  }}
+                  className="bg-blue-500 hover:bg-blue-600 w-full text-white transition btn"
+                >
+                  دریافت رزومه
+                </div>
+              ) : null}
 
               <div className="flex justify-center gap-4 mt-8">
                 <button
