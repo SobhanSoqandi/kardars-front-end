@@ -20,14 +20,10 @@ function CheckOtp({ onBack }) {
   const navigate = useNavigate();
   const [otp, setOtp] = useState(0);
   const { mutate, isSuccess } = useMutationData("auth/verify", "post");
-  useEffect(() => {
-    if (isSuccess) {
-      navigate("/login");
-    }
-  }, [isSuccess]);
+
   return (
     <div>
-      <div className="flex justify-center items-center px-4 w-96 mx-auto lg:mt-20">
+      <div className="flex justify-center items-center mx-auto lg:mt-20 px-4 w-96">
         <div className="p-8 rounded-xl">
           <div className="relative flex justify-center items-center text-center">
             <button
@@ -98,7 +94,28 @@ function CheckOtp({ onBack }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                mutate({ mobile: phone, otp_code: otp });
+                mutate(
+                  { mobile: phone, otp_code: otp },
+                  {
+                    onSuccess: (response) => {
+                      const newData = response?.data.data[0];
+                      localStorage.setItem(
+                        "personalInfo",
+                        JSON.stringify(newData),
+                      );
+                      const role = newData?.role;
+
+                      if (role === "student") {
+                        navigate("/student-panel");
+                      } else if (role === "company_owner") {
+                        navigate("/company-panel");
+                      } else {
+                        // Handle case where role is not recognized
+                        console.error("Unexpected role received:", role);
+                      }
+                    },
+                  },
+                );
               }}
               className="w-full btn btn--primary"
             >

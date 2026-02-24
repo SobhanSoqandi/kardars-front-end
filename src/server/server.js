@@ -2,10 +2,10 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 import getToken from "../function/getToken";
-
+export const url = "http://127.0.0.1:8000";
 const apikey = "YOUR_API_KEY";
 export const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: url + "/api",
   withCredentials: false,
   headers: {
     apikey: apikey,
@@ -21,7 +21,7 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 api.interceptors.response.use(
@@ -37,5 +37,5 @@ api.interceptors.response.use(
     console.log(error);
     // toast.error(message);
     return Promise.reject(error);
-  }
+  },
 );
