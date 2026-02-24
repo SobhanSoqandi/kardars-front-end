@@ -35,7 +35,7 @@
 }
 
 .btn--primary {
-  @apply bg-blue-500 hover:bg-blue-600 p-4 text-white transition duration-200;
+  @apply bg-blue-500 hover:bg-blue-600 p-2 text-white transition duration-200;
 }
 
 .link--style {
@@ -43,7 +43,7 @@
 }
 
 .badge--style {
-  @apply p-2 xl:p-3 rounded-xl text-white text-xs xl:text-sm text-center text-nowrap;
+  @apply p-2 rounded-xl text-white text-xs xl:text-sm text-center text-nowrap;
 }
 
 .request--cart {

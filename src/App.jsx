@@ -32,7 +32,6 @@ function App() {
             path="/studentRegisteration"
           />
 
-          <Route element={<AllCompany />} path="all" />
 
           <Route element={<CompanyPenel />} path="/company-panel" />
           <Route element={<GroupManager />} path="/groupmanager-panel" />
@@ -42,6 +41,8 @@ function App() {
           />
           <Route element={<StudentPanel />} path="student-panel" />
           <Route element={<DetailCompany />} path="company-detail" />
+          <Route element={<AllCompany />} path="all" />
+
         </Route>
         <Route element={<Login />} path="/login" />
         <Route element={<CheckOtp />} path="verify" />

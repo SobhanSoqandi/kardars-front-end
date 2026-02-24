@@ -28,7 +28,19 @@ export default function ReqCart({ name, position, date, id, status, cover }) {
           <div>{cover}</div>
         </div>
       </div>
-      <div className="flex flex-row md:flex-col justify-between items-center gap-2 space-y-2 pt-4 md:pt-2">
+
+      {/* <div className="flex flex-row md:flex-col justify-between items-center gap-2 space-y-2 pt-4 md:pt-2">
+        <div className="bg-blue-400 w-full badge--style"> مشاهده رزومه </div>
+        <div
+          onClick={() => {
+            mutate({ status: "accepted" });
+          }}
+          className="bg-green-600 w-full badge--style"
+        >
+          {" "}
+          پذیرش{" "}
+        </div>
+
         <div
           onClick={() => {
             window.open(
@@ -40,6 +52,7 @@ export default function ReqCart({ name, position, date, id, status, cover }) {
           {" "}
           مشاهده رزومه{" "}
         </div>
+
         {status == "pending" ? (
           <>
             {" "}
@@ -73,7 +86,9 @@ export default function ReqCart({ name, position, date, id, status, cover }) {
             {status}
           </div>
         )}
+
       </div>
+
     </div>
   );
 }
