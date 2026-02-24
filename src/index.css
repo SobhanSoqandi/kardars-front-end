@@ -43,7 +43,7 @@
 }
 
 .badge--style {
-  @apply p-2 rounded-xl text-white text-xs xl:text-sm text-center text-nowrap;
+  @apply p-2 rounded-xl text-xs xl:text-sm text-center text-nowrap;
 }
 
 .request--cart {

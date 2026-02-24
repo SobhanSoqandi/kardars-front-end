@@ -18,6 +18,7 @@ import EditProfileStudent from "./pages/login/EditProfileStudent";
 import EditProfileCompany from "./pages/login/EditProfileCompany";
 import CheckOtp from "./pages/login/CheckOtp";
 import GroupManager from "./pages/GroupManager/GroupManager";
+import AdminPanel from "./pages/admin/AdminPanel";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 
           <Route element={<CompanyPenel />} path="/company-panel" />
           <Route element={<GroupManager />} path="/groupmanager-panel" />
+          <Route element={<AdminPanel />} path="/admin-panel" />
           <Route
             element={<CompanyRegistration />}
             path="/CompanyRegistration"
