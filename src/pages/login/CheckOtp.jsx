@@ -22,7 +22,7 @@ function CheckOtp({ onBack }) {
   const { mutate, isSuccess } = useMutationData("auth/verify", "post");
 
   return (
-    <div>
+    <div dir="rtl" >
       <div className="flex justify-center items-center mx-auto lg:mt-20 px-4 w-96">
         <div className="p-8 rounded-xl">
           <div className="relative flex justify-center items-center text-center">
@@ -37,7 +37,7 @@ function CheckOtp({ onBack }) {
           <div className="flex py-10">
             <p className="text-gray-500">
               {" "}
-              کد تایید به شماره {phone} ارسال شد{" "}
+              کد تایید به شماره {ToPersianNumber(phone)} ارسال شد{" "}
             </p>
             <button
               onClick={onBack}
@@ -50,31 +50,38 @@ function CheckOtp({ onBack }) {
           <form
           // onSubmit={checkOtpHandler}
           >
-            <p className="font-bold text-secondary-800">
+            <p className="font-bold text-secondary-800 text-right">
               {" "}
               کد تایید را وارد کنید :
             </p>
-            <OTPInput
-              value={otp}
-              onChange={setOtp}
-              numInputs={6}
-              renderSeparator={<span> </span>}
-              renderInput={(props) => (
-                <input
-                  {...props}
-                  className="focus:shadow-blue-500/50 focus:shadow-lg my-5 border-[0.5px] border-blue-500 focus:border-blue-600 outline-none transition-all duration-300"
-                />
-              )}
-              shouldAutoFocus
-              containerStyle="flex flex-row-reverse gap-x-1  justify-center"
-              inputStyle={{
-                color: "blue",
-                width: "3.2rem",
-                height: "3.5rem",
-                padding: "0.5rem 0.2rem",
-                borderRadius: "1rem",
-              }}
-            />
+            <div dir="ltr" className="flex justify-center w-full my-5">
+              <OTPInput
+                value={otp}
+                onChange={setOtp}
+                numInputs={6}
+                renderSeparator={<span> </span>}
+                renderInput={(props) => (
+                  <input
+                    {...props}
+                    className="focus:shadow-blue-500/50 focus:shadow-lg border-[0.5px] border-blue-500 focus:border-blue-600 outline-none transition-all duration-300"
+                  />
+                )}
+                shouldAutoFocus
+                containerStyle="flex flex-row gap-x-1 justify-center"
+                inputStyle={{
+                  width: "3.2rem",
+                  height: "3.5rem",
+                  padding: "0.5rem 0.2rem",
+                  borderRadius: "1rem",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  color: "#2563eb", // blue-600
+                  backgroundColor: "white",
+                }}
+              />
+            </div>
+
 
             {time <= 0 ? (
               <div className="py-5 text-gray-600 text-sm text-center">
