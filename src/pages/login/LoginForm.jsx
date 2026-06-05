@@ -53,6 +53,22 @@ export default function LoginForm() {
         registerName={"mobile"}
         label={"موبایل :"}
         placeholder={""}
+        errors={errors}
+        validation={{
+          required: "وارد کردن موبایل الزامی است",
+          pattern: {
+            value: /^09[0-9]{9}$/,
+            message: "شماره موبایل باید با 09 شروع شود و 11 رقم باشد",
+          },
+          minLength: {
+            value: 11,
+            message: "شماره موبایل باید 11 رقم باشد",
+          },
+          maxLength: {
+            value: 11,
+            message: "شماره موبایل باید 11 رقم باشد",
+          },
+        }}
       />
       <div style={{ position: "relative" }}>
         <Input
@@ -61,14 +77,23 @@ export default function LoginForm() {
           registerName={"password"}
           label={"رمز عبور :"}
           type={show ? "text" : "password"}
+          errors={errors}
+          validation={{
+            required: "وارد کردن رمز عبور الزامی است",
+            minLength: {
+              value: 8,
+              message: "رمز عبور باید حداقل 8 کاراکتر باشد",
+            },
+          }}
         />
+
 
         <span
           onClick={() => setShow(!show)}
           style={{
             position: "absolute",
             left: "15px",
-            top: "68%",
+            top: "50%",
             transform: "translateY(-50%)",
             cursor: "pointer",
             userSelect: "none",
@@ -94,8 +119,8 @@ export default function LoginForm() {
           <Input
             className="w-4 h-4"
             type="checkbox"
-            // register={register}
-            // registerName="remember"
+          // register={register}
+          // registerName="remember"
           />
           <span className="text-gray-700 whitespace-nowrap">
             مرا به خاطر بسپار
