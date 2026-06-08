@@ -54,34 +54,27 @@ function CheckOtp({ onBack }) {
               {" "}
               کد تایید را وارد کنید :
             </p>
-            <div dir="ltr" className="flex justify-center w-full my-5">
-              <OTPInput
-                value={otp}
-                onChange={setOtp}
-                numInputs={6}
-                renderSeparator={<span> </span>}
-                renderInput={(props) => (
-                  <input
-                    {...props}
-                    className="focus:shadow-blue-500/50 focus:shadow-lg border-[0.5px] border-blue-500 focus:border-blue-600 outline-none transition-all duration-300"
-                  />
-                )}
-                shouldAutoFocus
-                containerStyle="flex flex-row gap-x-1 justify-center"
-                inputStyle={{
-                  width: "3.2rem",
-                  height: "3.5rem",
-                  padding: "0.5rem 0.2rem",
-                  borderRadius: "1rem",
-                  textAlign: "center",
-                  fontSize: "1.2rem",
-                  fontWeight: "bold",
-                  color: "#2563eb", // blue-600
-                  backgroundColor: "white",
-                }}
-              />
-            </div>
-
+            <OTPInput
+              value={otp}
+              onChange={setOtp}
+              numInputs={5}
+              renderSeparator={<span> </span>}
+              renderInput={(props) => (
+                <input
+                  {...props}
+                  className="focus:shadow-blue-500/50 focus:shadow-lg my-5 border-[0.5px] border-blue-500 focus:border-blue-600 outline-none transition-all duration-300"
+                />
+              )}
+              shouldAutoFocus
+              containerStyle="flex flex-row-reverse gap-x-1  justify-center"
+              inputStyle={{
+                color: "blue",
+                width: "3.2rem",
+                height: "3.5rem",
+                padding: "0.5rem 0.2rem",
+                borderRadius: "1rem",
+              }}
+            />
 
             {time <= 0 ? (
               <div className="py-5 text-gray-600 text-sm text-center">

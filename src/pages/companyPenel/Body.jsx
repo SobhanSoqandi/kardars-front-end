@@ -24,9 +24,9 @@ export default function Body({ comapany }) {
             <div className="space-y-4 w-full">
               <div className="flex justify-between items-center bg-gray-100 p-6 border-b-[.5px] border-b-gray-200 rounded-t-2xl">
                 <div className="font-semibold">درخواست‌های اخیر</div>
-                <div>{request?.data?.requests.length}</div>
+                <div className="bg-white text-blue-600 shadow p-1 w-8 text-center text-lg rounded-xl" >{request?.data?.requests.length}</div>
               </div>
-              <div className="space-y-2 px-6 py-3 mx-w-[500px] overflow-y-scroll ">
+              <div className="space-y-2 px-6 py-3 mx-w-[500px] overflow-y-auto ">
                 {request?.data?.requests.map((item) => (
                   <ReqCart
                     status={item.status}
