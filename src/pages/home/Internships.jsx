@@ -26,7 +26,7 @@ export default function Internships() {
             </div>
             <div
               onClick={() => navigate("/all")}
-              className="border border-blue-600 text-blue-600 btn"
+              className="btn"
             >
               مشاهده همه موقعیت‌ها
             </div>

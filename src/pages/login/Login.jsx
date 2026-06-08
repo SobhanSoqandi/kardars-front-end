@@ -22,7 +22,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex justify-center items-center pt-[100px]">
+    <div className="flex justify-center items-center pt-[30px]">
       <div
         className="space-y-6 shadow shadow-gray-300 p-5 rounded-xl min-w-[350px] "
         style={{ direction: "rtl" }}

@@ -57,7 +57,7 @@ function CheckOtp({ onBack }) {
             <OTPInput
               value={otp}
               onChange={setOtp}
-              numInputs={6}
+              numInputs={5}
               renderSeparator={<span> </span>}
               renderInput={(props) => (
                 <input

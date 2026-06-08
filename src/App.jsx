@@ -25,27 +25,34 @@ function App() {
     <>
       <Toaster position="top-center" />
       <Routes>
+        {/* in Layout outlet */}
         <Route element={<Layout />} path="/">
           <Route element={<Home />} index />
-
-          <Route
-            element={<StudentRegisteration />}
-            path="/studentRegisteration"
-          />
-
 
           <Route element={<CompanyPenel />} path="/company-panel" />
           <Route element={<GroupManager />} path="/groupmanager-panel" />
           <Route element={<AdminPanel />} path="/admin-panel" />
-          <Route
-            element={<CompanyRegistration />}
-            path="/CompanyRegistration"
-          />
+
           <Route element={<StudentPanel />} path="student-panel" />
           <Route element={<DetailCompany />} path="company-detail" />
           <Route element={<AllCompany />} path="all" />
 
         </Route>
+
+
+
+
+
+
+       {/* exit outlet */}
+        <Route
+          element={<CompanyRegistration />}
+          path="/CompanyRegistration"
+        />
+        <Route
+          element={<StudentRegisteration />}
+          path="/studentRegisteration"
+        />
         <Route element={<Login />} path="/login" />
         <Route element={<CheckOtp />} path="verify" />
         <Route element={<AddCompany />} path="add" />

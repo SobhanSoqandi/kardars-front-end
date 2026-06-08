@@ -48,7 +48,7 @@ export default function CreatReq() {
         lableClassName={"label--style"}
         className={"input--style"}
       />
-      <button type="submit" className="bg-blue-500 mt-4 px-4 py-2 rounded-2xl">
+      <button type="submit" className="btn btn--primary w-full">
         ایجاد درخواست
       </button>
     </form>

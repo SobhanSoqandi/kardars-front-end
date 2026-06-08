@@ -20,7 +20,7 @@ export default function StudentReq({ id }) {
   return (
     <form className="p-6 w-[400px]">
       <Textarea
-        className={"p-2 border rounded-xl"}
+        className={"p-2 border border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"}
         register={register}
         registerName="cover_letter"
         placeholder="متن درخواست خود را بنویسید..."
@@ -29,7 +29,7 @@ export default function StudentReq({ id }) {
       <button
         type="button"
         onClick={handleSubmit(onSubmit)}
-        className="mt-4 w-[150px] btn btn--primary"
+        className="mt-4 w-full btn btn--primary"
       >
         ارسال
       </button>
