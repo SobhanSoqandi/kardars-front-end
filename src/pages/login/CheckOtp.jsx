@@ -22,7 +22,7 @@ function CheckOtp({ onBack }) {
   const { mutate, isSuccess } = useMutationData("auth/verify", "post");
 
   return (
-    <div>
+    <div dir="rtl" >
       <div className="flex justify-center items-center mx-auto lg:mt-20 px-4 w-96">
         <div className="p-8 rounded-xl">
           <div className="relative flex justify-center items-center text-center">
@@ -37,7 +37,7 @@ function CheckOtp({ onBack }) {
           <div className="flex py-10">
             <p className="text-gray-500">
               {" "}
-              کد تایید به شماره {phone} ارسال شد{" "}
+              کد تایید به شماره {ToPersianNumber(phone)} ارسال شد{" "}
             </p>
             <button
               onClick={onBack}
@@ -50,14 +50,14 @@ function CheckOtp({ onBack }) {
           <form
           // onSubmit={checkOtpHandler}
           >
-            <p className="font-bold text-secondary-800">
+            <p className="font-bold text-secondary-800 text-right">
               {" "}
               کد تایید را وارد کنید :
             </p>
             <OTPInput
               value={otp}
               onChange={setOtp}
-              numInputs={6}
+              numInputs={5}
               renderSeparator={<span> </span>}
               renderInput={(props) => (
                 <input

@@ -5,6 +5,7 @@ import Textarea from "../../components/TextArea";
 import useMutationData from "../../hooks/useMutationData";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CancleBtn from "../../components/CancleBtn";
 
 function StudentRegisteration() {
   const inputStyle =
@@ -24,7 +25,8 @@ function StudentRegisteration() {
     }
   }, [isSuccess]);
   return (
-    <div className="shadow shadow-gray-400">
+    
+    <div className="mx-auto container" >
       <div className="pt-10 font-bold text-xl text-center">
         {" "}
         ثبت‌ نام دانشجو{" "}
@@ -32,7 +34,7 @@ function StudentRegisteration() {
       <div>
         <div className="flex justify-center items-center">
           <div
-            className="bg-white shadow-lg mx-auto p-8 rounded-lg w-[600px] max-w-4xl text-right dir-rtl"
+            className="bg-white rounded-2xl shadow-lg mx-auto p-8 w-[600px] max-w-4xl text-right dir-rtl"
             dir="rtl"
           >
             <h2 className="mx-auto mb-8 w-28 font-bold text-blue-600 text-xl text-center logo mark">
@@ -131,9 +133,7 @@ function StudentRegisteration() {
                 >
                   ثبت‌ نام دانشجو
                 </button>
-                <button type="button" className="shadow w-full btn">
-                  انصراف
-                </button>
+               <CancleBtn />
               </div>
             </form>
           </div>

@@ -7,13 +7,15 @@ import { IoIosPeople } from "react-icons/io";
 import { IoMdTime } from "react-icons/io";
 import Info from "./Info";
 import { useNavigate } from "react-router-dom";
+import truncateText from "../utils/truncateText";
+import { LiaUserCheckSolid } from "react-icons/lia";
 
 export default function InternshipsCart({ info }) {
   const navigate = useNavigate();
   return (
     <div style={{ direction: "rtl" }} className="">
       <Cart>
-        <div className="space-y-4 w-[510px] h-[320px]">
+        <div className="space-y-4 ">
           <div className="font-medium text-[16px] sm:text-[19px] md:text-[16px] lg:text-[18px]">
             {info.titr}
           </div>
@@ -27,9 +29,9 @@ export default function InternshipsCart({ info }) {
             titr={"مکان "}
             content={info.location}
           />
-          <Info icon={<IoIosPeople />} titr={"ظرفیت"} content={info.capacity} />
-          <div className="p-3 border-2 border-gray-300 border-dashed rounded-xl w-[300px] sm:w-[330px] text-[#64748b] text-[15px] sm:text-[17px] md:text-[16px] lg:text-[18px]">
-            {info.description}
+          <Info icon={<LiaUserCheckSolid />} titr={"ظرفیت"} content={info.capacity} />
+          <div className="p-3 border-2 border-gray-300 border-dashed rounded-xl text-[#64748b] text-[15px] sm:text-[17px] md:text-[16px] lg:text-[18px]">
+            {truncateText(info.description , 50)}
           </div>
           <div
             onClick={() => navigate(`/company-detail?id=${info.id}`)}

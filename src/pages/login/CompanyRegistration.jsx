@@ -6,6 +6,7 @@ import Textarea from "../../components/TextArea";
 import { useMutation } from "@tanstack/react-query";
 import useMutationData from "../../hooks/useMutationData";
 import { useNavigate } from "react-router-dom";
+import CancleBtn from "../../components/CancleBtn";
 
 export default function CompanyRegistration() {
   const inputStyle =
@@ -25,7 +26,7 @@ export default function CompanyRegistration() {
     }
   }, [isSuccess]);
   return (
-    <div className="mx-auto" >
+    <div className="mx-auto container" >
       <div className="pt-10 font-bold text-xl text-center"> ثبت‌ نام شرکت </div>
       <div>
         <div className="flex justify-center items-center">
@@ -150,9 +151,7 @@ export default function CompanyRegistration() {
                 >
                   ثبت‌نام شرکت
                 </button>
-                <button type="button" className="shadow w-full btn">
-                  انصراف
-                </button>
+               <CancleBtn />
               </div>
             </form>
           </div>

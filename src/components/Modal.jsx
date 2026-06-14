@@ -5,6 +5,7 @@ import React, {
   useState,
 } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 
 export const ModalContext = createContext(null);
 
@@ -36,7 +37,7 @@ export function Window({ children, name }) {
         // onClick={() => context.setOpen(null)}
         className="z-40 fixed inset-0 bg-black/20 backdrop-blur-sm"
       >
-        <div className="top-[30%] left-[35%] z-50 absolute flex justify-center items-center bg-white shadow shadow-gray-400 mt-1 border-2 border-gray-400">
+        <div className="top-[30%] left-[35%] rounded-xl z-50 absolute flex justify-center items-center bg-white shadow shadow-gray-400 mt-1 border-2 border-gray-400">
           {children}
         </div>
       </div>
@@ -51,9 +52,9 @@ export function CloseBtnModal() {
   return (
     <button
       onClick={() => context.setOpen(null)}
-      className="top-1 right-1 absolute"
+      className="top-1 left-1 absolute"
     >
-      <IoMdCloseCircleOutline className="text-2xl" />
+      <IoClose className="text-2xl cursor-pointer text-blue-600 mx-2 m-2" />
     </button>
   );
 }
