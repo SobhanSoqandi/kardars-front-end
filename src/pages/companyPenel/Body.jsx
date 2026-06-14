@@ -20,13 +20,13 @@ export default function Body({ comapany }) {
     <>
       {isSuccess && isSuccessfull ? (
         <div className="items-start gap-5 grid grid-cols-1 xl:grid-cols-5 w-full">
-          <div className="xl:col-span-3 shadow shadow-gray-400 rounded-2xl ">
+          <div className="xl:col-span-3 shadow shadow-gray-400 rounded-2xl">
             <div className="space-y-4 w-full">
               <div className="flex justify-between items-center bg-gray-100 p-6 border-b-[.5px] border-b-gray-200 rounded-t-2xl">
                 <div className="font-semibold">درخواست‌های اخیر</div>
                 <div>{request?.data?.requests.length}</div>
               </div>
-              <div className="space-y-2 px-6 py-3 mx-w-[500px] overflow-y-scroll ">
+              <div className="space-y-2 mx-w-[500px] px-6 py-3 overflow-y-scroll">
                 {request?.data?.requests.map((item) => (
                   <ReqCart
                     status={item.status}
